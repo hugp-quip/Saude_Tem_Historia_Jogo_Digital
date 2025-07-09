@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbmg1vlpfyev"]
+
+[ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="1_1nxwo"]
+[ext_resource type="Texture2D" uid="uid://dc0553u7k7lhi" path="res://Assets/slot.PNG" id="2_i3nd2"]
+[ext_resource type="Script" uid="uid://dvoow8wvu4wyw" path="res://Scripts/components/node_carta_display.gd" id="2_we6fa"]
+[ext_resource type="Script" uid="uid://b2ai2lp8bpkl1" path="res://Scripts/components/ui_handlernode.gd" id="3_mmeom"]
+[ext_resource type="Theme" uid="uid://udf724xr0hla" path="res://Assets/cardLegendatheme.tres" id="4_1wh1p"]
+[ext_resource type="Script" uid="uid://cvnx4yv437la5" path="res://Scripts/components/legenda.gd" id="5_pxhla"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lej71"]
+size = Vector2(378.5, 543.561)
+
+[node name="node_carta_display" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_1nxwo")
+script = ExtResource("2_we6fa")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(-1.25, -0.235565)
+shape = SubResource("RectangleShape2D_lej71")
+
+[node name="UIHandlernode" type="Node2D" parent="."]
+script = ExtResource("3_mmeom")
+
+[node name="Legenda" type="Label" parent="UIHandlernode"]
+offset_left = -174.0
+offset_top = 136.0
+offset_right = 176.0
+offset_bottom = 254.0
+theme = ExtResource("4_1wh1p")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Legenda"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("5_pxhla")
+min_font_size = 35
+max_font_size = 75
+max_line_number = 3
+max_chars = 59
+
+[node name="Imagem" type="Sprite2D" parent="UIHandlernode"]
+position = Vector2(-1.04355, -60.8955)
+scale = Vector2(1.05554, 0.853007)
+texture = ExtResource("2_i3nd2")
+
+[node name="GameplayHandler" type="Node2D" parent="."]

@@ -10,16 +10,17 @@ config_version=5
 
 [application]
 
-config/name="SEJ_PROTOTIPO"
-run/main_scene="res://Scenes/Main.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/name="STH-SEJ-WEB"
+config/tags=PackedStringArray("projeto")
+run/main_scene="res://Scenes/pages/NewRodada.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 G="*res://Scripts/globals/global.gd"
 Res="*res://Scripts/globals/res.gd"
-util="*res://util.gd"
+util="*res://Scripts/globals/util.gd"
 
 [debug]
 
@@ -33,6 +34,10 @@ window/size/initial_position_type=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [input]
 
 click={
@@ -45,3 +50,4 @@ click={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
