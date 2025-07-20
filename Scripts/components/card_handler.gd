@@ -1,5 +1,5 @@
 
-extends Node2D
+class_name  CardHandler extends Node2D
 
 
 @onready var animHan : = get_node("AnimationHandler")
@@ -7,23 +7,27 @@ extends Node2D
 @export var n_cartas : int = 5
 
 var cards_dragged : Array = []
-var card_being_dragged : Node2D = null
 var mouse_cardOffset : Vector2
 var cards_that_finished_auto_moving : int = 0
 
-var card_hovered
+var card_being_dragged : Node2D = null
+var card_horvered_scale : Vector2 
+var card_hovered : Node2D = null
 
 func _ready() -> void:
 	cards_dragged = animHan.cards
 	#cards_dragged.map( func (card) : SlotManager. )
 	
+func restart() -> void:
+	card_being_dragged = null
+	cards_dragged = []
 
 
 
 func _physics_process(delta: float) -> void:
 	if card_being_dragged:
 		if card_hovered != null: 
-				card_hovered.scale = Vector2(1, 1)
+				card_hovered.scale = card_horvered_scale
 				card_hovered = null
 		card_being_dragged.position= animHan.get_local_mouse_position() - mouse_cardOffset #lerp(card_being_dragged.position, get_local_mouse_position() - mouse_cardOffset, 25*delta)
 	else:
@@ -33,13 +37,14 @@ func _physics_process(delta: float) -> void:
 		if not (card_being_dragged) and _card_hovered.size() > 0 and _card_hovered[0]:   
 			if card_hovered != _card_hovered[0]:
 				if card_hovered != null: 
-					card_hovered.scale = Vector2(1, 1)
+					card_hovered.scale = card_horvered_scale
 
 				card_hovered = _card_hovered[0]
-				card_hovered.scale = Vector2(1.2, 1.2)
+				card_horvered_scale = card_hovered.scale
+				card_hovered.scale = card_hovered.scale*1.4
 		else:
 			if card_hovered != null: 
-				card_hovered.scale = Vector2(1, 1)
+				card_hovered.scale = card_horvered_scale
 				card_hovered = null
 	
 
