@@ -42,15 +42,15 @@ func _ready() -> void:
 
 func _on_switch(new:int, data: BarRES = null) -> int:
 	#_convert_to_binary()
-	# #partidaTESTE()
-	# atual.queue_free()
-	# atual = load("res://Scenes/pages/NEWPartida.tscn").instantiate()
-	# add_child(atual)
-	# var part : PartidaRES = PartidaRES.new()
-	# part.criar(5, load("res://Resources/Baralhos/AIDS.tres")) # G.baralhoAT)
-	# atual.criar_partida(part)
+	#partidaTESTE()
+	atual.queue_free()
+	atual = load("res://Scenes/pages/NEWPartida.tscn").instantiate()
+	var part : PartidaRES = PartidaRES.new()
+	part.criar(5, load("res://Resources/Baralhos/AIDS.res")) 
+	atual.criar_partida(part)
+	add_child(atual)
 
-	# return 1
+	return 1
 	if new == G.M.EXIT:
 		#savebeforequiting()
 		get_tree().quit()
@@ -62,11 +62,8 @@ func _on_switch(new:int, data: BarRES = null) -> int:
 		# btw to find a type by name use "type_string(type_off())"
 		atual.queue_free()
 		atual = G.menus[new].instantiate()
-		
-		#print("data = " + str(data))
-		#atual.criar_partida(5, 3, data["baralhoAT"], data["albumAT"])
-		var part : PartidaRES = PartidaRES.new()
-		part.criar(5, data)#load("res://Resources/Baralhos/AIDS.tres")) # G.baralhoAT)
+		var part2 : PartidaRES = PartidaRES.new()
+		part2.criar(5, data)
 		atual.criar_partida(part)
 
 		menu.add_child(atual)

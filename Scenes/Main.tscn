@@ -24,6 +24,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.215

@@ -12,4 +12,3 @@ func criar(_n_cartas: int, _baralhoRES: BarRES) -> void:
 	n_rodadas = clamp(_baralhoRES.cartas.size()/5, 1, 5)
 	n_cartas = _n_cartas
 	baralhoINFO = _baralhoRES
-

@@ -31,7 +31,6 @@ func load_fake_card(id : int = -1) -> void:
 			r = id
 		else:
 			r = rand.randi_range(0, 71) # card id
-		#print("internal: " + str(r))
 		var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
 		data = res
 		criar_carta_display(res)

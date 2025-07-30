@@ -6,4 +6,5 @@ extends Node
 #@onready var cardDisplay := preload("res://Scenes/components/OLDCardDisplay.tscn")
 @onready var nodeCardDisplay := load("res://Scenes/components/node_carta_display.tscn")
 @onready var nodeSlot := load("res://Scenes/components/slot.tscn")
+@onready var controlCardDisplay := load("res://Scenes/Control_Card.tscn")
 var pathCartas := "res://Resources/Cartas"

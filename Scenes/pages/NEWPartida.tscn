@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceoel78p5ce80"]
+[gd_scene load_steps=15 format=3 uid="uid://ceoel78p5ce80"]
 
 [ext_resource type="Script" uid="uid://b2u7htb7hh40p" path="res://Scripts/pages/new_partida.gd" id="1_ul87i"]
 [ext_resource type="Script" uid="uid://bslvwt8o7qgwp" path="res://Scripts/components/partida_ui_handler.gd" id="2_cynnd"]
@@ -6,6 +6,14 @@
 [ext_resource type="Script" uid="uid://drddmmukedqih" path="res://Scripts/components/baralho_handler.gd" id="3_hiw0w"]
 [ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="3_vsclk"]
 [ext_resource type="Script" uid="uid://dv1s4vvwa6xo8" path="res://Scripts/components/rodada_cont.gd" id="5_vsclk"]
+[ext_resource type="Script" uid="uid://kco3ei3fvt33" path="res://Scenes/pages/cont_card_handler.gd" id="7_fuh8x"]
+[ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/Control_Card.tscn" id="7_npai1"]
+[ext_resource type="Script" uid="uid://dm505umj6ohxy" path="res://Scenes/pages/cont_slot_manager.gd" id="7_wimq8"]
+[ext_resource type="Resource" path="res://Resources/Cartas/35.res" id="10_6tta7"]
+[ext_resource type="Resource" path="res://Resources/Cartas/13.res" id="11_vccyl"]
+[ext_resource type="Resource" path="res://Resources/Cartas/34.res" id="13_i2se5"]
+[ext_resource type="Resource" path="res://Resources/Cartas/2.res" id="14_ulsrg"]
+[ext_resource type="Resource" path="res://Resources/Cartas/12.res" id="14_xm45g"]
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -16,48 +24,139 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ul87i")
 
-[node name="Icon" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 27.0
-offset_top = 34.0
-offset_right = 261.0
-offset_bottom = 103.0
-texture = ExtResource("2_wvtvi")
-expand_mode = 1
+[node name="BaralhoHandler" type="Node" parent="."]
+script = ExtResource("3_hiw0w")
 
-[node name="partida_UI_Handler" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(303, 465)
+[node name="GameplayDiv" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.233025
-anchor_right = 0.263021
-anchor_bottom = 0.950618
+anchor_left = 0.00260417
+anchor_top = 0.166667
+anchor_right = 0.999132
+anchor_bottom = 1.00154
+theme_override_constants/separation = 20
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="partida_UI_Handler" type="TextureRect" parent="GameplayDiv"]
+custom_minimum_size = Vector2(303, 0)
+layout_mode = 2
 texture = ExtResource("3_vsclk")
 expand_mode = 1
 script = ExtResource("2_cynnd")
+
+[node name="Icon" type="TextureRect" parent="GameplayDiv/partida_UI_Handler"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.320132
+anchor_top = 0.0444441
+anchor_right = 0.663366
+anchor_bottom = 0.196296
+texture = ExtResource("2_wvtvi")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="partida_UI_Handler"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameplayDiv/partida_UI_Handler"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = 84.9998
-offset_right = -23.0002
-offset_bottom = -266.0
+anchors_preset = -1
+anchor_left = 0.0561056
+anchor_top = 0.196296
+anchor_right = 0.937294
+anchor_bottom = 0.288889
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Envio" type="Button" parent="partida_UI_Handler/VBoxContainer"]
+[node name="Envio" type="Button" parent="GameplayDiv/partida_UI_Handler/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Enviar Rodada"
 
-[node name="BaralhoHandler" type="Node" parent="."]
-script = ExtResource("3_hiw0w")
-
-[node name="RodadaCont" type="Node2D" parent="."]
+[node name="RodadaCont" type="Control" parent="GameplayDiv"]
+custom_minimum_size = Vector2(810, 0)
+layout_mode = 2
 script = ExtResource("5_vsclk")
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="partida_UI_Handler/VBoxContainer/Envio" to="partida_UI_Handler" method="_on_envio_pressed"]
+[node name="CardHandler" type="Control" parent="GameplayDiv/RodadaCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_fuh8x")
+
+[node name="DraggingCard" parent="GameplayDiv/RodadaCont/CardHandler" instance=ExtResource("7_npai1")]
+z_index = 1
+layout_mode = 1
+anchor_left = 1.25062
+anchor_top = 0.279629
+anchor_right = 1.25062
+anchor_bottom = 0.279629
+offset_right = 142.031
+offset_bottom = 238.333
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+
+[node name="SlotManager" type="VBoxContainer" parent="GameplayDiv/RodadaCont/CardHandler"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+script = ExtResource("7_wimq8")
+
+[node name="Table" type="HBoxContainer" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
+layout_mode = 2
+
+[node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
+layout_mode = 2
+
+[node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
+layout_mode = 2
+
+[node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
+layout_mode = 2
+
+[node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
+layout_mode = 2
+
+[node name="Hand" type="HBoxContainer" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
+layout_mode = 2
+data = ExtResource("10_6tta7")
+
+[node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
+layout_mode = 2
+data = ExtResource("11_vccyl")
+
+[node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
+layout_mode = 2
+data = ExtResource("14_xm45g")
+
+[node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
+layout_mode = 2
+data = ExtResource("13_i2se5")
+
+[node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
+layout_mode = 2
+data = ExtResource("14_ulsrg")
+
+[node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/VBoxContainer/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]

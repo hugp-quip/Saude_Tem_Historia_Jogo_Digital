@@ -13,6 +13,8 @@ var baralhoAT : BarRES
 var albumAT: AlbumRes # -> album do baralho atual
 
 var debug : bool = false
+var n_cartas : int = 5
+
 
 # Caches
 #var baralhoToLoad : Array[String] 
