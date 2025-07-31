@@ -1,6 +1,9 @@
 @tool
 class_name  ControlCard extends TextureButton
 
+signal has_mouse(card: ControlCard)
+signal lost_mouse(card: ControlCard)
+
 @onready var ui_hand : CartaControlUIHandler = get_node("Carta_Control_UI_Handler")
 
 @export var data : CartaRES
@@ -12,13 +15,13 @@ func _ready() -> void:
 	if Engine.is_editor_hint() and get_parent() is SubViewport:
 		print("a")
 		_load_fake_data()
-	pressed.connect(click_test)
 
 func make_slot() -> void:
 	if is_slot():
 		return 
+	data = null
 	ui_hand.hide()
-	get_node("TESTE").text = "ISSO AQUI É UM SLOT"
+	#get_node("TESTE").text = "ISSO AQUI É UM SLOT"
 
 func make_card(_data: CartaRES) -> void:
 	get_node("TESTE").text = ""
@@ -33,8 +36,6 @@ func criar_carta_display(_data: CartaRES) -> void:
 func updateUI(_data: CartaRES) -> void:
 	ui_hand.update(_data)
 
-
-
 func _load_fake_data():
 	var rand = RandomNumberGenerator.new()
 	rand.randomize()
@@ -43,5 +44,9 @@ func _load_fake_data():
 	data = res
 	criar_carta_display(res)
 
-func click_test():
-	get_node("TESTE").text = "i was clicked!" if get_node("TESTE").text != "i was clicked!" else "you clicked me again"
+func _on_mouse_entered() -> void:
+	has_mouse.emit(self)
+
+
+func _on_mouse_exited() -> void:
+	lost_mouse.emit(self)

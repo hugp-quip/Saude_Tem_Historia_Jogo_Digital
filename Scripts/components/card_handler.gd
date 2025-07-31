@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void:
 		if card_hovered != null: 
 				card_hovered.scale = card_horvered_scale
 				card_hovered = null
-		card_being_dragged.position= animHan.get_local_mouse_position() - mouse_cardOffset #lerp(card_being_dragged.position, get_local_mouse_position() - mouse_cardOffset, 25*delta)
+		card_being_dragged.position= animHan.get_local_mouse_position() - mouse_cardOffset
+		 #lerp(card_being_dragged.position, get_local_mouse_position() - mouse_cardOffset, 25*delta)
 	else:
 	# optimization oportunity, we cast this raycast every frame and also on the input.
 		var _card_hovered = find_card_raycast().map(func(dict) : if dict.collider.get_parent() is NodeCard: return dict.collider.get_parent()).filter( func(node) : return node != null)

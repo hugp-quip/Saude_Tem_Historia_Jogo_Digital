@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://tmqf5gwiooq3" path="res://Scenes/control_card.gd" id="2_jx54u"]
 [ext_resource type="Script" uid="uid://y00k35e20g4b" path="res://Scenes/carta_control_ui_handler.gd" id="3_a2waf"]
 [ext_resource type="Theme" uid="uid://udf724xr0hla" path="res://Assets/cardLegendatheme.tres" id="3_hve78"]
-[ext_resource type="Resource" path="res://Resources/Cartas/28.res" id="3_jnp0w"]
-[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/28.res" id="5_wwcuv"]
+[ext_resource type="Resource" path="res://Resources/Cartas/10.res" id="3_jnp0w"]
+[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/10.res" id="5_wwcuv"]
 
 [node name="Control_Card" type="TextureButton"]
 custom_minimum_size = Vector2(100, 0)
@@ -56,7 +56,7 @@ theme = ExtResource("3_hve78")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -12
 theme_override_font_sizes/font_size = 15
-text = "Descoberta do primeiro antibiótico"
+text = "Cazuza morre devido a AIDS"
 horizontal_alignment = 1
 autowrap_mode = 2
 clip_text = true
@@ -86,3 +86,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

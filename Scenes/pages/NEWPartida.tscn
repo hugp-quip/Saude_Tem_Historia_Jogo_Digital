@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceoel78p5ce80"]
+[gd_scene load_steps=14 format=3 uid="uid://ceoel78p5ce80"]
 
 [ext_resource type="Script" uid="uid://b2u7htb7hh40p" path="res://Scripts/pages/new_partida.gd" id="1_ul87i"]
 [ext_resource type="Script" uid="uid://bslvwt8o7qgwp" path="res://Scripts/components/partida_ui_handler.gd" id="2_cynnd"]
@@ -9,11 +9,10 @@
 [ext_resource type="Script" uid="uid://kco3ei3fvt33" path="res://Scenes/pages/cont_card_handler.gd" id="7_fuh8x"]
 [ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/Control_Card.tscn" id="7_npai1"]
 [ext_resource type="Script" uid="uid://dm505umj6ohxy" path="res://Scenes/pages/cont_slot_manager.gd" id="7_wimq8"]
-[ext_resource type="Resource" path="res://Resources/Cartas/35.res" id="10_6tta7"]
-[ext_resource type="Resource" path="res://Resources/Cartas/13.res" id="11_vccyl"]
-[ext_resource type="Resource" path="res://Resources/Cartas/34.res" id="13_i2se5"]
+[ext_resource type="Resource" path="res://Resources/Cartas/9.res" id="10_f0nq7"]
+[ext_resource type="Resource" path="res://Resources/Cartas/38.res" id="11_6tta7"]
+[ext_resource type="Resource" path="res://Resources/Cartas/29.res" id="13_vccyl"]
 [ext_resource type="Resource" path="res://Resources/Cartas/2.res" id="14_ulsrg"]
-[ext_resource type="Resource" path="res://Resources/Cartas/12.res" id="14_xm45g"]
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -27,23 +26,24 @@ script = ExtResource("1_ul87i")
 [node name="BaralhoHandler" type="Node" parent="."]
 script = ExtResource("3_hiw0w")
 
-[node name="GameplayDiv" type="HBoxContainer" parent="."]
+[node name="GameplayDiv" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.00260417
 anchor_top = 0.166667
 anchor_right = 0.999132
 anchor_bottom = 1.00154
-theme_override_constants/separation = 20
-alignment = 1
+offset_bottom = 6.10352e-05
 metadata/_edit_use_anchors_ = true
 
 [node name="partida_UI_Handler" type="TextureRect" parent="GameplayDiv"]
 custom_minimum_size = Vector2(303, 0)
 layout_mode = 2
+anchor_right = 0.263937
+anchor_bottom = 0.998156
 texture = ExtResource("3_vsclk")
 expand_mode = 1
 script = ExtResource("2_cynnd")
+metadata/_edit_use_anchors_ = true
 
 [node name="Icon" type="TextureRect" parent="GameplayDiv/partida_UI_Handler"]
 layout_mode = 1
@@ -75,6 +75,10 @@ text = "Enviar Rodada"
 [node name="RodadaCont" type="Control" parent="GameplayDiv"]
 custom_minimum_size = Vector2(810, 0)
 layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.281359
+anchor_right = 0.986934
+anchor_bottom = 0.998156
 script = ExtResource("5_vsclk")
 metadata/_edit_use_anchors_ = true
 
@@ -104,6 +108,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 8.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
@@ -136,23 +142,23 @@ theme_override_constants/separation = 5
 
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("10_6tta7")
+data = ExtResource("10_f0nq7")
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("11_vccyl")
+data = ExtResource("11_6tta7")
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("14_xm45g")
+data = ExtResource("11_6tta7")
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("13_i2se5")
+data = ExtResource("14_ulsrg")
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("14_ulsrg")
+data = ExtResource("13_vccyl")
 
 [node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
 anchors_preset = 0

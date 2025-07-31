@@ -11,6 +11,7 @@ func criar_rodada(partidaState : PartidaRES, cartas : Array)-> void:
 	cardHan.iniciar(cartas)
 
 
+
 func _on_envio_pressed() -> void:
 	push_error("Calmae ae paezão")
 #	current_rodada._on_envio_pressed()
