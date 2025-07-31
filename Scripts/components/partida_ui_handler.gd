@@ -6,4 +6,4 @@ func update(_partida: PartidaRES) -> void:
 	pass
 
 func _on_envio_pressed() -> void:
-	get_parent().rodadaCont._on_envio_pressed()
+	get_parent().get_parent().rodadaCont._on_envio_pressed()

@@ -6,11 +6,13 @@ class_name ControlSlotManager extends VBoxContainer
 
 var hand_slots : Array # Array[ControlCartaSlot]
 var table_slots : Array # Array[ControlCartaSlot]
+var cartas : Array # Array[CartaRES]
 
-func inserir_cartas(cartas : Array):
-	var cartas_size : int = cartas.size()
+func inserir_cartas(_cartas : Array):
+	cartas = _cartas
+	var cartas_size : int = _cartas.size()
 	
-	if cartas_size == 0 or cartas == null: push_error("Tentou criar mesa sem cartas!!!!")
+	if cartas_size == 0 or _cartas == null: push_error("Tentou criar mesa sem _cartas!!!!")
 
 	print("Criando mesa com "+ str(cartas_size) + " cartas.")
 	if cartas_size > 5:
@@ -24,4 +26,24 @@ func inserir_cartas(cartas : Array):
 	table_slots.map( func (slot : ControlCard) : slot.make_slot() )
 
 	for i in cartas_size:
-		hand_slots[i].make_card(cartas[i])
+		hand_slots[i].make_card(_cartas[i])
+
+
+
+
+func get_correct_card_order() -> Array:
+	var ret := cartas.duplicate()
+	ret.sort_custom(func (c1, c2) -> bool: return c1.ano.to_int() < c2.ano.to_int())
+	return ret
+
+func is_table_full() -> bool:
+	for slot in table_slots:
+		if slot.is_slot():
+			return false
+	return true
+
+func get_current_card_order() -> Array:
+	if !is_table_full(): return []
+	return table_slots
+
+	

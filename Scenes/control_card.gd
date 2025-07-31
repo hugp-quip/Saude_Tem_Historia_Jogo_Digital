@@ -9,7 +9,7 @@ signal lost_mouse(card: ControlCard)
 @export var data : CartaRES
 
 func is_slot() -> bool:
-	return !ui_hand.visible
+	return data == null
 
 func _ready() -> void:
 	if Engine.is_editor_hint() and get_parent() is SubViewport:
@@ -17,14 +17,12 @@ func _ready() -> void:
 		_load_fake_data()
 
 func make_slot() -> void:
-	if is_slot():
+	if not ui_hand.visible:
 		return 
 	data = null
 	ui_hand.hide()
-	#get_node("TESTE").text = "ISSO AQUI É UM SLOT"
 
 func make_card(_data: CartaRES) -> void:
-	get_node("TESTE").text = ""
 	ui_hand.show()
 	criar_carta_display(_data)
 

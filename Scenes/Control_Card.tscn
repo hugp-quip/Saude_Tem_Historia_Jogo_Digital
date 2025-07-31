@@ -65,26 +65,17 @@ metadata/_edit_use_anchors_ = true
 [node name="ano" type="Label" parent="Carta_Control_UI_Handler"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.232673
-anchor_top = 0.0681818
-anchor_right = 0.754951
-anchor_bottom = 0.16958
+anchor_left = 0.217822
+anchor_top = 0.0594406
+anchor_right = 0.772278
+anchor_bottom = 0.132587
+offset_bottom = 34.08
+scale = Vector2(1, 0.52)
 theme = ExtResource("3_hve78")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TESTE" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.108911
-anchor_top = 0.178322
-anchor_right = 0.881188
-anchor_bottom = 0.646853
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

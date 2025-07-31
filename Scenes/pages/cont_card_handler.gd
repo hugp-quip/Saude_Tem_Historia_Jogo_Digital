@@ -76,6 +76,9 @@ func _show_cursor(card: ControlCard) -> void:
 	is_dragging_card = true
 	mouse_cardOffset = get_global_mouse_position() - card.global_position
 	print("Card clicked!!!! " + ("um slot!" if card.is_slot() else "uma carta!"))
+	var lab : Label = card.get_node("Carta_Control_UI_Handler").get_node("ano")
+	cursor_card.get_node("Carta_Control_UI_Handler").get_node("ano").add_theme_color_override("font_color", lab.get_theme_color("font_color"))
+	cursor_card.get_node("Carta_Control_UI_Handler").get_node("ano").text = lab.text 
 	cursor_card.size = card.size
 	cursor_card.make_card(card.data)
 	cursor_card.show()
