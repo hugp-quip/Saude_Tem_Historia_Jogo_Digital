@@ -43,14 +43,14 @@ func _ready() -> void:
 func _on_switch(new:int, data: BarRES = null) -> int:
 	#_convert_to_binary()
 	#partidaTESTE()
-	atual.queue_free()
-	atual = load("res://Scenes/pages/NEWPartida.tscn").instantiate()
-	var part : PartidaRES = PartidaRES.new()
-	part.criar(5, load("res://Resources/Baralhos/AIDS.res")) 
-	atual.criar_partida(part)
-	add_child(atual)
-
-	return 1
+	# atual.queue_free()
+	# atual = load("res://Scenes/pages/NEWPartida.tscn").instantiate()
+	# var part : PartidaRES = PartidaRES.new()
+	# part.criar(5, load("res://Resources/Baralhos/AIDS.res")) 
+	# atual.criar_partida(part)
+	# add_child(atual)
+	
+	# return 1
 	if new == G.M.EXIT:
 		#savebeforequiting()
 		get_tree().quit()
@@ -63,8 +63,8 @@ func _on_switch(new:int, data: BarRES = null) -> int:
 		atual.queue_free()
 		atual = G.menus[new].instantiate()
 		var part2 : PartidaRES = PartidaRES.new()
-		part2.criar(5, data)
-		atual.criar_partida(part)
+		part2.criar(G.n_cartas, data)
+		atual.criar_partida(part2)
 
 		menu.add_child(atual)
 		menu.get_child(1).switch.connect(_on_switch)
@@ -73,10 +73,7 @@ func _on_switch(new:int, data: BarRES = null) -> int:
 		#create_new_baralhos()
 		pass
 	
-	#assert(new != G.M.ALBUM, "TRIED TO SWITCH TO ALBUM!!!")
 	atual.queue_free()
-	#print(G)
-	#print(G.menus[new])
 	atual = G.menus[new].instantiate()
 	menu.add_child(atual)
 	menu.get_child(1).switch.connect(_on_switch)

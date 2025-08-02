@@ -18,17 +18,22 @@ var cards_data : Array
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		cards_data = _make_fake_card_res_list(5) 
-		slotMan.inserir_cartas(cards_data)
+		slotMan.inserir_e_criar_cartas(cards_data)
 
 
 func iniciar(_cards_data : Array) -> void:
-	slotMan.inserir_cartas(_cards_data)
+	slotMan.inserir_e_criar_cartas(_cards_data)
 	var all_slots : = slotMan.table_slots + slotMan.hand_slots
 	all_slots.map(func (slot : ControlCard) : 
 		slot.has_mouse.connect(_update_has_mouse) 
 		slot.lost_mouse.connect(_update_has_mouse)
 		)
 	cursor_card.hide()
+
+func reiniciar(_cards_data : Array) -> void:
+	var all_slots : = slotMan.table_slots + slotMan.hand_slots
+	all_slots.map(func (slot : ControlCard) : slot.make_slot())
+	slotMan.inserir_cartas(_cards_data)
 
 func _physics_process(_delta: float) -> void:
 	if is_dragging_card:
@@ -45,7 +50,7 @@ func _input(event: InputEvent) -> void:
 		if event.pressed:
 			print("pressed")
 			if !slot_with_mouse: return
-			if slot_with_mouse.is_slot(): return
+			if slot_with_mouse.is_slot() or not (slot_with_mouse.draggable): return
 			if slot_with_mouse.data == null: push_error("De alguma forma tentou mover carta sem dados???")
 			_show_cursor(slot_with_mouse)
 			cursor_cards_original_slot = slot_with_mouse
@@ -58,7 +63,7 @@ func _input(event: InputEvent) -> void:
 
 				_hide_cursor()
 				# Não foi colocada em slot
-				if slot_with_mouse == null: 
+				if slot_with_mouse == null or not (slot_with_mouse.draggable): 
 					cursor_cards_original_slot.make_card(cursor_card.data)
 					return
 

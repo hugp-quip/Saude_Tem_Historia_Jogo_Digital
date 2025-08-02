@@ -8,7 +8,7 @@ var hand_slots : Array # Array[ControlCartaSlot]
 var table_slots : Array # Array[ControlCartaSlot]
 var cartas : Array # Array[CartaRES]
 
-func inserir_cartas(_cartas : Array):
+func inserir_e_criar_cartas(_cartas : Array):
 	cartas = _cartas
 	var cartas_size : int = _cartas.size()
 	
@@ -29,6 +29,10 @@ func inserir_cartas(_cartas : Array):
 		hand_slots[i].make_card(_cartas[i])
 
 
+func inserir_cartas(_cartas : Array):
+		cartas = _cartas
+		for i in _cartas.size():
+			hand_slots[i].make_card(_cartas[i])
 
 
 func get_correct_card_order() -> Array:

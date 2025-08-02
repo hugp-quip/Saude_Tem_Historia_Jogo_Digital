@@ -11,4 +11,6 @@ extends Node
 @onready var feed_back_error := load("res://Assets/Err.PNG")
 @onready var feed_back_almost := load("res://Assets/Alm.PNG")
 @onready var feedback := load("res://Scenes/components/feed_back.tscn")
+@onready var pause_texture := load("res://Assets/pause.png")
+@onready var resume_texture := load("res://Assets/resume.png")
 var pathCartas := "res://Resources/Cartas"

@@ -1,20 +1,23 @@
-[gd_scene load_steps=16 format=3 uid="uid://ceoel78p5ce80"]
+[gd_scene load_steps=19 format=3 uid="uid://ceoel78p5ce80"]
 
 [ext_resource type="Script" uid="uid://b2u7htb7hh40p" path="res://Scripts/pages/new_partida.gd" id="1_ul87i"]
 [ext_resource type="Script" uid="uid://bslvwt8o7qgwp" path="res://Scripts/components/partida_ui_handler.gd" id="2_cynnd"]
 [ext_resource type="Texture2D" uid="uid://doi6dd3eavfjg" path="res://icon.svg" id="2_wvtvi"]
 [ext_resource type="Script" uid="uid://drddmmukedqih" path="res://Scripts/components/baralho_handler.gd" id="3_hiw0w"]
 [ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="3_vsclk"]
+[ext_resource type="Script" uid="uid://bisb84kcg8sa1" path="res://Scripts/components/label.gd" id="4_i2se5"]
 [ext_resource type="Script" uid="uid://dv1s4vvwa6xo8" path="res://Scripts/components/rodada_cont.gd" id="5_vsclk"]
 [ext_resource type="Script" uid="uid://bgggtfu1e3ln" path="res://Scenes/pages/new_rodada_judge.gd" id="7_6tta7"]
 [ext_resource type="Script" uid="uid://kco3ei3fvt33" path="res://Scenes/pages/cont_card_handler.gd" id="7_fuh8x"]
 [ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/Control_Card.tscn" id="7_npai1"]
+[ext_resource type="Texture2D" uid="uid://dc0553u7k7lhi" path="res://Assets/slot.PNG" id="7_ulsrg"]
 [ext_resource type="Script" uid="uid://dm505umj6ohxy" path="res://Scenes/pages/cont_slot_manager.gd" id="7_wimq8"]
+[ext_resource type="Texture2D" uid="uid://71g5i8adkgwk" path="res://Assets/pause.png" id="8_xm45g"]
 [ext_resource type="Resource" path="res://Resources/Cartas/24.res" id="11_vccyl"]
-[ext_resource type="Resource" path="res://Resources/Cartas/58.res" id="13_i2se5"]
-[ext_resource type="Resource" path="res://Resources/Cartas/48.res" id="13_ulsrg"]
-[ext_resource type="Resource" path="res://Resources/Cartas/57.res" id="14_i2se5"]
-[ext_resource type="Resource" path="res://Resources/Cartas/23.res" id="15_xm45g"]
+[ext_resource type="Resource" path="res://Resources/Cartas/42.res" id="14_xm45g"]
+[ext_resource type="Resource" path="res://Resources/Cartas/33.res" id="15_bgqo6"]
+[ext_resource type="Resource" path="res://Resources/Cartas/31.res" id="17_oqqmr"]
+[ext_resource type="Resource" path="res://Resources/Cartas/1.res" id="18_b5nmm"]
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -37,47 +40,211 @@ anchor_bottom = 1.00154
 offset_bottom = 6.10352e-05
 metadata/_edit_use_anchors_ = true
 
-[node name="partida_UI_Handler" type="TextureRect" parent="GameplayDiv"]
-custom_minimum_size = Vector2(303, 0)
+[node name="partida_UI_Handler" type="Control" parent="GameplayDiv"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.263937
-anchor_bottom = 0.998156
-texture = ExtResource("3_vsclk")
-expand_mode = 1
+anchor_top = -0.205176
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_cynnd")
 metadata/_edit_use_anchors_ = true
 
-[node name="Icon" type="TextureRect" parent="GameplayDiv/partida_UI_Handler"]
+[node name="Label" type="Label" parent="GameplayDiv/partida_UI_Handler"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.320132
-anchor_top = 0.0444441
-anchor_right = 0.663366
-anchor_bottom = 0.196296
+anchor_left = 0.00261324
+anchor_top = 0.0107362
+anchor_right = 0.192509
+anchor_bottom = 0.110429
+theme_override_font_sizes/font_size = 20
+text = "fps = "
+script = ExtResource("4_i2se5")
+metadata/_edit_use_anchors_ = true
+
+[node name="PausaBut" type="TextureButton" parent="GameplayDiv/partida_UI_Handler"]
+layout_mode = 0
+anchor_left = 0.917247
+anchor_top = 0.0260737
+anchor_right = 0.980836
+anchor_bottom = 0.13497
+texture_normal = ExtResource("8_xm45g")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Side_Panel" type="TextureRect" parent="GameplayDiv/partida_UI_Handler"]
+custom_minimum_size = Vector2(303, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.17
+anchor_right = 0.264
+anchor_bottom = 0.994
+offset_top = 0.159996
+offset_right = -0.071991
+offset_bottom = -0.0880127
+texture = ExtResource("3_vsclk")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameplayDiv/partida_UI_Handler/Side_Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0693069
+anchor_top = 0.0353817
+anchor_right = 0.930693
+anchor_bottom = 0.558659
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="TextureRect" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
 texture = ExtResource("2_wvtvi")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameplayDiv/partida_UI_Handler"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0561056
-anchor_top = 0.196296
-anchor_right = 0.937294
-anchor_bottom = 0.288889
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Envio" type="Button" parent="GameplayDiv/partida_UI_Handler/VBoxContainer"]
+[node name="Envio" type="Button" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Enviar Rodada"
 
-[node name="Tentativas" type="Label" parent="GameplayDiv/partida_UI_Handler/VBoxContainer"]
+[node name="Rodadas" type="Label" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
 layout_mode = 2
-text = "teste"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "??????"
+
+[node name="Tentativas" type="Label" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "??????"
+
+[node name="Menus_Container" type="Panel" parent="GameplayDiv/partida_UI_Handler"]
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Menu_Pausa" type="TextureRect" parent="GameplayDiv/partida_UI_Handler/Menus_Container"]
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.20122
+anchor_top = 0.0935579
+anchor_right = 0.788328
+anchor_bottom = 0.866567
+offset_left = -0.804886
+offset_top = 0.373993
+offset_right = -0.804871
+offset_bottom = 0.373962
+texture = ExtResource("7_ulsrg")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa"]
+layout_mode = 0
+anchor_left = 0.263178
+anchor_top = 0.451179
+anchor_right = 0.717086
+anchor_bottom = 0.960253
+offset_right = -3.05176e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Resumir" type="Button" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer"]
+custom_minimum_size = Vector2(40, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Voltar ao Jogo
+"
+
+[node name="Reiniciar" type="Button" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer"]
+custom_minimum_size = Vector2(40, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Reiniciar
+"
+
+[node name="Sair" type="Button" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer"]
+custom_minimum_size = Vector2(40, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sair
+"
+
+[node name="Label" type="Label" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa"]
+layout_mode = 0
+anchor_left = 0.0547055
+anchor_top = 0.0499092
+anchor_right = 0.916687
+anchor_bottom = 0.395281
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "Pausado"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu_Final" type="TextureRect" parent="GameplayDiv/partida_UI_Handler/Menus_Container"]
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.20122
+anchor_top = 0.0935579
+anchor_right = 0.788328
+anchor_bottom = 0.866567
+offset_left = -0.804886
+offset_top = 0.373993
+offset_right = -0.804871
+offset_bottom = 0.373962
+texture = ExtResource("7_ulsrg")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.251349
+anchor_top = 0.638838
+anchor_right = 0.705257
+anchor_bottom = 0.974228
+offset_right = -3.05176e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Reiniciar" type="Button" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer"]
+custom_minimum_size = Vector2(40, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Reiniciar
+"
+
+[node name="Sair" type="Button" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer"]
+custom_minimum_size = Vector2(40, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sair
+"
+
+[node name="Resultado" type="Label" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final"]
+layout_mode = 0
+anchor_left = 0.0547055
+anchor_top = 0.0499092
+anchor_right = 0.916687
+anchor_bottom = 0.395281
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "<Resultado>"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="RodadaCont" type="Control" parent="GameplayDiv"]
 custom_minimum_size = Vector2(810, 0)
@@ -156,23 +323,23 @@ theme_override_constants/separation = 5
 
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("11_vccyl")
+data = ExtResource("14_xm45g")
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("13_i2se5")
+data = ExtResource("15_bgqo6")
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("13_ulsrg")
+data = ExtResource("11_vccyl")
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("14_i2se5")
+data = ExtResource("17_oqqmr")
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("15_xm45g")
+data = ExtResource("18_b5nmm")
 
 [node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
 visible = false
@@ -228,4 +395,10 @@ anchor_bottom = -0.716667
 offset_right = 142.031
 offset_bottom = 238.333
 
-[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/VBoxContainer/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/PausaBut" to="." method="_on_pausa_but_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Resumir" to="." method="_on_resumir_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer/Sair" to="." method="_on_sair_pressed"]

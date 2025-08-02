@@ -30,7 +30,9 @@ func criar_hand_para_partida() -> Array:
 
 
 func _get_hand(n_cartas : int) -> Array:
-	#assert(n_cartas > 0 and n_cartas < cartas.size() - used_cartas.size(), "NÚMERO DE CARTAS REQUISITADO MAIOR DO QUE O TAMANHO RESTANTE DO BARALHO .")
+	if not (n_cartas > 0 and n_cartas < cartas.size() - used_cartas.size()):
+		push_error("NÚMERO DE CARTAS REQUISITADO MAIOR DO QUE O TAMANHO RESTANTE DO BARALHO") 
+		return []
 	var cartasID : Array = []
 	while cartasID.size() < n_cartas:
 		var r : int = G.rand.randi_range(0, cartas.size()-1) 
