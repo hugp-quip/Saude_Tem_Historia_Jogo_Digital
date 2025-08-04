@@ -3,11 +3,27 @@ extends Control
 class_name PartidaUIHandler
 
 @onready var side_panel : VBoxContainer = get_node("Side_Panel/VBoxContainer")
-@onready var menus : Panel = get_node("Menus_Container")
+@onready var menus : Control = get_node("Menus_Container")
+@onready var pause_overlay : Panel = menus.get_node("pause_overlay")
+@onready var menu_final : TextureRect = menus.get_node("Menu_Final")
+@onready var menu_final_minus_button : TextureButton = menu_final.get_node("Minimizar")
 @onready var pause_button : TextureButton = get_node("PausaBut")
 func update(_partida: PartidaRES) -> void:
 	side_panel.get_node("Rodadas").text = "Rodada: " + str(_partida.rodada_atual+1) + " / " +  str(_partida.n_rodadas)  
 	side_panel.get_node("Tentativas").text = "Tentativas: " + str(_partida.tentativas_usadas) + " / " +  str(_partida.n_tentativas)  
+
+func enviar_rodada_to_proxima_rodada(new_rodada : Callable):
+	var envio_but : Button = side_panel.get_node("Envio")
+	envio_but.text = "Próxima Rodada"
+	if envio_but.pressed.get_connections().filter(func (d : Dictionary) : return d.callable.get_method() == new_rodada.get_method()).size() > 0:
+		envio_but.pressed.disconnect(new_rodada)
+		
+	envio_but.pressed.connect(new_rodada.bind(reverter_estado_do_envio))
+
+func reverter_estado_do_envio(new_rodada : Callable):
+	var envio_but : Button = side_panel.get_node("Envio")
+	envio_but.text = "Enviar Rodada"
+	envio_but.pressed.disconnect(new_rodada)
 
 func switch_pause() -> void:
 	if pause_button.texture_normal == Res.pause_texture:
@@ -18,25 +34,34 @@ func switch_pause() -> void:
 		hide_pause()
 	
 func show_pause() -> void:
-	
+	pause_overlay.show()
 	menus.show()
 	menus.get_node("Menu_Pausa").show()
 
 func hide_pause() -> void:
-	
+	pause_overlay.hide()
 	menus.get_node("Menu_Pausa").hide()
 	menus.hide()
 	
 func show_final(win : bool) -> void:
+	pause_overlay.show()
 	menus.show()
 	var final := menus.get_node("Menu_Final")
 	final.show()
+	pause_button.pressed.disconnect(get_parent().get_parent()._on_pausa_but_pressed)
+	pause_button.pressed.connect(_on_minimizar_pressed)
+	pause_button.top_level = true
 	if win:
 		final.get_node("Resultado").text = "Você ganhou!!!"
 	else:
 		final.get_node("Resultado").text = "Você perdeu..."
 
-
-
 func _on_envio_pressed() -> void:
 	get_parent().get_parent().rodadaCont._on_envio_pressed()
+
+
+func _on_minimizar_pressed() -> void:
+	if menu_final.visible:
+		menu_final.hide()	
+	else:
+		menu_final.show()

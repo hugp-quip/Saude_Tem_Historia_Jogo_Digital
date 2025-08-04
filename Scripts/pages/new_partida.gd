@@ -18,10 +18,11 @@ func _ready() -> void:
 	uiHandler = get_node("GameplayDiv/partida_UI_Handler")
 	baralhoHandler  = get_node("BaralhoHandler")
 	updateUI(state)
-
-	baralhoHandler.comecar(state.baralhoINFO, state.n_rodadas, state.n_cartas)
+	
 	rodadaCont.finished_with_win.connect(_on_finished_rodada)
 	rodadaCont.needs_update_ui.connect(updateUI)
+
+	baralhoHandler.comecar(state.baralhoINFO, state.n_rodadas, state.n_cartas)
 	rodadaCont.criar_primeira_rodada(state, baralhoHandler.criar_hand_para_partida())
 	get_node("GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer/Icon").texture = state.baralhoINFO.imagem
 	
@@ -35,12 +36,15 @@ func _on_finished_rodada(win : bool) -> void:
 		self.state.rodada_atual += 1
 		if self.state.rodada_atual >= self.state.n_rodadas:
 			uiHandler.show_final(win)
-		rodadaCont._criar_rodada(baralhoHandler.criar_hand_para_partida())
-	else:
+		uiHandler.enviar_rodada_to_proxima_rodada(new_rodada)
+		
+	else: # defeat
+
 		uiHandler.show_final(win)
 	
-	
-
+func new_rodada( reverter_estado_do_envio : Callable):
+	rodadaCont._criar_rodada(baralhoHandler.criar_hand_para_partida())
+	reverter_estado_do_envio.bind(new_rodada).call()
 
 func _on_pausa_but_pressed() -> void:
 	uiHandler.switch_pause()

@@ -23,27 +23,39 @@ func _criar_rodada(cartas : Array) -> void:
 
 func _on_envio_pressed() -> void:
 	var results = judge.get_rodada_results()
+	if not (results.has_result): return
+
 	var fb : JudgeFeedBack = Res.feedback.instantiate()
 	#print("resultado:", results)	
 	results.correct_cards.map(func (card : ControlCard) : card.silence() )
-
 	if results.correct_cards.size() == G.n_cartas:
 		print("ganhou!")
+		enviar_feedback_padrao(results, fb)
 		finished_with_win.emit(true)
 		return
 	elif partida_state.n_tentativas -1 > partida_state.tentativas_usadas:
+		enviar_feedback_padrao(results, fb)
 		print("tente novamente!")
 		partida_state.tentativas_usadas += 1
 		needs_update_ui.emit(partida_state)
 	else:
 		print("perdeu!!!")
 		partida_state.tentativas_usadas += 1
+		enviar_feedback_derrota(results, fb)
 		finished_with_win.emit(false)
 		return
+
+func enviar_feedback_derrota(results : Dictionary, fb : JudgeFeedBack) -> void:
+	results.incorrect_cards.map(func (card : ControlCard) : card.silence() )
+	results.relative_correct_cards.map(func (card : ControlCard) : card.silence() )
+	enviar_feedback(results.correct_cards, fb.FEEDBACK.CORRECT, "#7cfc00")
+	enviar_feedback(results.incorrect_cards, fb.FEEDBACK.CORRECT, "#FF0000")
+	enviar_feedback(results.relative_correct_cards, fb.FEEDBACK.CORRECT, "#cccc00")
+
+func enviar_feedback_padrao(results : Dictionary, fb : JudgeFeedBack) -> void:
 	enviar_feedback(results.correct_cards, fb.FEEDBACK.CORRECT, "#7cfc00")
 	enviar_feedback(results.incorrect_cards, fb.FEEDBACK.INCORRECT, "#FF0000")
 	enviar_feedback(results.relative_correct_cards, fb.FEEDBACK.RELATIVE, "#cccc00")
-
 
 
 func enviar_feedback( cards: Array, feedback_type: int ,ano_color: String ):

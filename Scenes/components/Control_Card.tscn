@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dm1lndut6vb0i"]
 
-[ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="1_kxkug"]
-[ext_resource type="Script" uid="uid://tmqf5gwiooq3" path="res://Scenes/control_card.gd" id="2_jx54u"]
-[ext_resource type="Script" uid="uid://y00k35e20g4b" path="res://Scenes/carta_control_ui_handler.gd" id="3_a2waf"]
-[ext_resource type="Theme" uid="uid://udf724xr0hla" path="res://Assets/cardLegendatheme.tres" id="3_hve78"]
-[ext_resource type="Resource" path="res://Resources/Cartas/47.res" id="3_jnp0w"]
-[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/47.res" id="5_wwcuv"]
+[ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="1_5pqb4"]
+[ext_resource type="Script" uid="uid://tmqf5gwiooq3" path="res://Scripts/components/control_card.gd" id="2_wte5v"]
+[ext_resource type="Resource" path="res://Resources/Cartas/46.res" id="3_5pqb4"]
+[ext_resource type="Script" uid="uid://y00k35e20g4b" path="res://Scripts/components/carta_control_ui_handler.gd" id="4_rg6ic"]
+[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/46.res" id="5_wte5v"]
+[ext_resource type="Theme" uid="uid://udf724xr0hla" path="res://Assets/cardLegendatheme.tres" id="6_dna6q"]
 
 [node name="Control_Card" type="TextureButton"]
 custom_minimum_size = Vector2(100, 0)
@@ -15,13 +15,13 @@ anchor_bottom = 0.441358
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
-texture_normal = ExtResource("1_kxkug")
-texture_pressed = ExtResource("1_kxkug")
-texture_hover = ExtResource("1_kxkug")
+texture_normal = ExtResource("1_5pqb4")
+texture_pressed = ExtResource("1_5pqb4")
+texture_hover = ExtResource("1_5pqb4")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("2_jx54u")
-data = ExtResource("3_jnp0w")
+script = ExtResource("2_wte5v")
+data = ExtResource("3_5pqb4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Carta_Control_UI_Handler" type="Control" parent="."]
@@ -32,7 +32,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("3_a2waf")
+script = ExtResource("4_rg6ic")
 
 [node name="Imagem" type="TextureRect" parent="Carta_Control_UI_Handler"]
 layout_mode = 1
@@ -41,7 +41,7 @@ anchor_left = 0.0866337
 anchor_top = 0.174825
 anchor_right = 0.898515
 anchor_bottom = 0.716783
-texture = ExtResource("5_wwcuv")
+texture = ExtResource("5_wte5v")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -52,14 +52,15 @@ anchor_left = 0.0668317
 anchor_top = 0.748252
 anchor_right = 0.933168
 anchor_bottom = 0.954545
-theme = ExtResource("3_hve78")
+theme = ExtResource("6_dna6q")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = -12
+theme_override_constants/line_spacing = -10
 theme_override_font_sizes/font_size = 15
-text = "Ano em que o SUS foi criado"
+text = "1º casos de hanseniase no Brasil"
 horizontal_alignment = 1
 autowrap_mode = 2
 clip_text = true
+text_overrun_behavior = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="ano" type="Label" parent="Carta_Control_UI_Handler"]
@@ -71,7 +72,7 @@ anchor_right = 0.772278
 anchor_bottom = 0.132587
 offset_bottom = 34.08
 scale = Vector2(1, 0.52)
-theme = ExtResource("3_hve78")
+theme = ExtResource("6_dna6q")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1

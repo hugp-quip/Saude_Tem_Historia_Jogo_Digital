@@ -5,51 +5,39 @@ extends Control
 @onready var atual : Node = menu.get_child(0)
 
 func _ready() -> void:
-	#print("create")
-	#create_new_baralhos()
 	menu.get_child(0).switch.connect(_on_switch)
 
-# func _convert_to_binary() -> void:
-	
-# 	var baralhosDir : = "res://Resources/Baralhos/"
-# 	var baralhos_ImagensDir : = "res://Resources/Baralhos_Imagens/"
-# 	var cartasDir : = "res://Resources/Cartas/"
-# 	var cartas_imagensDir : = "res://Resources/Cartas_Imagens/"
-# 	#test2(baralhosDir, baralhos_ImagensDir )
-# 	#test(baralhos_ImagensDir, "null")
-# 	test2(cartasDir, cartas_imagensDir)
-# 	#test(cartas_imagensDir, "null")
-# 	assert(false)
-# 	#for baralho in 
-
-# func test2(path: String, imgPath: String):
-# 	var dir : = DirAccess.open(path)
-# 	var i := 0
-# 	for res in dir.get_files():
-# 		var temp : Resource = load(path+res)
-# 		temp.imagem = load(imgPath + str(i) + ".res" )
-# 		print(error_string(ResourceSaver.save(temp, path + str(i) + ".res")))
-		#i+=1
-
-# func test(path: String, name: String):
-# 	var baralhosDir : = DirAccess.open(path)
-# 	var i := 0
-# 	for res in baralhosDir.get_files():
-# 		var temp : Resource = load(path+res)
-# 		print(path + str(i) + ".res")
-# 		print(error_string(ResourceSaver.save(temp, path + str(i) + ".res")))
-# 		i+=1
-
-func _on_switch(new:int, data: BarRES = null) -> int:
-	#_convert_to_binary()
-	#partidaTESTE()
+# func partidaTESTE()
 	# atual.queue_free()
 	# atual = load("res://Scenes/pages/NEWPartida.tscn").instantiate()
 	# var part : PartidaRES = PartidaRES.new()
 	# part.criar(5, load("res://Resources/Baralhos/AIDS.res")) 
 	# atual.criar_partida(part)
 	# add_child(atual)
-	
+func corrigirCartas():
+	var path_cartas := "Cartas/"
+	var path_imagens: = "Cartas_Imagens/"
+	var resources: = "res://Resources/"
+	var deprecated := "res://Resources/deprecated/"
+	var file := DirAccess.open(deprecated.path_join(path_imagens))
+	var str_files = file.get_files()
+	for str_old_id : String in str_files:
+		print(path_imagens.path_join(str_old_id))
+		#res://Resources/Cartas_Imagens/0.res
+		print(deprecated.path_join(path_imagens.path_join(str_old_id)))
+		var img : ImageTexture = ResourceLoader.load(deprecated.path_join(path_imagens.path_join(str_old_id)))
+		var carta : CartaRES = ResourceLoader.load(deprecated.path_join(path_cartas.path_join(str_old_id)))
+		
+		ResourceSaver.save(img, resources.path_join(path_imagens).path_join(str(carta.id) + ".res"))
+		var img2 : ImageTexture = ResourceLoader.load(resources.path_join(path_imagens).path_join(str(carta.id) + ".res"))
+		carta.imagem = img2
+		ResourceSaver.save(carta, resources.path_join(path_cartas).path_join(str(carta.id) + ".res"))
+
+func _on_switch(new:int, data: BarRES = null) -> int:
+	#_convert_to_binary()
+	#partidaTESTE()
+	# corrigirCartas()
+	# get_tree().quit()
 	# return 1
 	if new == G.M.EXIT:
 		#savebeforequiting()

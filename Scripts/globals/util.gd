@@ -2,8 +2,19 @@
 extends Node
 
 const carta_size : Vector2 = Vector2(404.0, 572.0) 
-		
+@onready var random : RandomNumberGenerator = RandomNumberGenerator.new()	
 
+func _ready():
+	random.randomize()
+
+func stop() -> void:
+	push_error("UTIL HAS STOPPED PROGRAM!!!")
+	assert(false)
+
+func random_card_res():
+	var r : int = random.randi_range(0, 71)
+	var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
+	return res
 
 # if already has scale do get_rect*scale to old_size
 func scale_to_same_size(reference_size : Vector2, old_size : Vector2) -> Vector2:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ceoel78p5ce80"]
+[gd_scene load_steps=20 format=3 uid="uid://ceoel78p5ce80"]
 
 [ext_resource type="Script" uid="uid://b2u7htb7hh40p" path="res://Scripts/pages/new_partida.gd" id="1_ul87i"]
 [ext_resource type="Script" uid="uid://bslvwt8o7qgwp" path="res://Scripts/components/partida_ui_handler.gd" id="2_cynnd"]
@@ -7,17 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="3_vsclk"]
 [ext_resource type="Script" uid="uid://bisb84kcg8sa1" path="res://Scripts/components/label.gd" id="4_i2se5"]
 [ext_resource type="Script" uid="uid://dv1s4vvwa6xo8" path="res://Scripts/components/rodada_cont.gd" id="5_vsclk"]
-[ext_resource type="Script" uid="uid://bgggtfu1e3ln" path="res://Scenes/pages/new_rodada_judge.gd" id="7_6tta7"]
-[ext_resource type="Script" uid="uid://kco3ei3fvt33" path="res://Scenes/pages/cont_card_handler.gd" id="7_fuh8x"]
-[ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/Control_Card.tscn" id="7_npai1"]
+[ext_resource type="Script" uid="uid://bgggtfu1e3ln" path="res://Scripts/components/new_rodada_judge.gd" id="7_6tta7"]
+[ext_resource type="Script" uid="uid://kco3ei3fvt33" path="res://Scripts/components/cont_card_handler.gd" id="7_fuh8x"]
+[ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/components/Control_Card.tscn" id="7_npai1"]
 [ext_resource type="Texture2D" uid="uid://dc0553u7k7lhi" path="res://Assets/slot.PNG" id="7_ulsrg"]
-[ext_resource type="Script" uid="uid://dm505umj6ohxy" path="res://Scenes/pages/cont_slot_manager.gd" id="7_wimq8"]
+[ext_resource type="Script" uid="uid://dm505umj6ohxy" path="res://Scripts/components/cont_slot_manager.gd" id="7_wimq8"]
 [ext_resource type="Texture2D" uid="uid://71g5i8adkgwk" path="res://Assets/pause.png" id="8_xm45g"]
-[ext_resource type="Resource" path="res://Resources/Cartas/24.res" id="11_vccyl"]
-[ext_resource type="Resource" path="res://Resources/Cartas/42.res" id="14_xm45g"]
-[ext_resource type="Resource" path="res://Resources/Cartas/33.res" id="15_bgqo6"]
-[ext_resource type="Resource" path="res://Resources/Cartas/31.res" id="17_oqqmr"]
-[ext_resource type="Resource" path="res://Resources/Cartas/1.res" id="18_b5nmm"]
+[ext_resource type="Texture2D" uid="uid://dhwrrynb3ho2c" path="res://Assets/navigate_minus.png" id="9_6tta7"]
+[ext_resource type="Resource" path="res://Resources/Cartas/34.res" id="15_bgqo6"]
+[ext_resource type="Resource" path="res://Resources/Cartas/56.res" id="15_oqqmr"]
+[ext_resource type="Resource" path="res://Resources/Cartas/42.res" id="16_b5nmm"]
+[ext_resource type="Resource" path="res://Resources/Cartas/69.res" id="17_87nlb"]
+[ext_resource type="Resource" path="res://Resources/Cartas/27.res" id="19_3uivl"]
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -48,29 +49,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_cynnd")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="GameplayDiv/partida_UI_Handler"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.00261324
-anchor_top = 0.0107362
-anchor_right = 0.192509
-anchor_bottom = 0.110429
-theme_override_font_sizes/font_size = 20
-text = "fps = "
-script = ExtResource("4_i2se5")
-metadata/_edit_use_anchors_ = true
-
-[node name="PausaBut" type="TextureButton" parent="GameplayDiv/partida_UI_Handler"]
-layout_mode = 0
-anchor_left = 0.917247
-anchor_top = 0.0260737
-anchor_right = 0.980836
-anchor_bottom = 0.13497
-texture_normal = ExtResource("8_xm45g")
-ignore_texture_size = true
-stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Side_Panel" type="TextureRect" parent="GameplayDiv/partida_UI_Handler"]
@@ -123,7 +101,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "??????"
 
-[node name="Menus_Container" type="Panel" parent="GameplayDiv/partida_UI_Handler"]
+[node name="Menus_Container" type="Control" parent="GameplayDiv/partida_UI_Handler"]
 visible = false
 top_level = true
 layout_mode = 1
@@ -134,6 +112,16 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
+
+[node name="pause_overlay" type="Panel" parent="GameplayDiv/partida_UI_Handler/Menus_Container"]
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Menu_Pausa" type="TextureRect" parent="GameplayDiv/partida_UI_Handler/Menus_Container"]
 visible = false
@@ -246,6 +234,46 @@ horizontal_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
+[node name="Minimizar" type="TextureButton" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.928515
+anchor_top = 0.0259528
+anchor_right = 0.978785
+anchor_bottom = 0.0958256
+texture_normal = ExtResource("9_6tta7")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PausaBut" type="TextureButton" parent="GameplayDiv/partida_UI_Handler"]
+top_level = true
+z_index = 1
+layout_mode = 0
+anchor_left = 0.917247
+anchor_top = 0.0260737
+anchor_right = 0.980836
+anchor_bottom = 0.13497
+offset_left = -3.66907
+offset_top = 0.104227
+offset_right = -3.92334
+offset_bottom = 0.539536
+texture_normal = ExtResource("8_xm45g")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="fps" type="Label" parent="GameplayDiv/partida_UI_Handler"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.00153302
+anchor_right = 0.126736
+anchor_bottom = 0.0694342
+theme_override_font_sizes/font_size = 30
+text = "fps = "
+script = ExtResource("4_i2se5")
+metadata/_edit_use_anchors_ = true
+
 [node name="RodadaCont" type="Control" parent="GameplayDiv"]
 custom_minimum_size = Vector2(810, 0)
 layout_mode = 1
@@ -278,6 +306,7 @@ offset_right = 142.031
 offset_bottom = 238.333
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
+data = null
 
 [node name="SlotManager" type="VBoxContainer" parent="GameplayDiv/RodadaCont/CardHandler"]
 layout_mode = 1
@@ -323,23 +352,23 @@ theme_override_constants/separation = 5
 
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("14_xm45g")
+data = ExtResource("15_oqqmr")
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("15_bgqo6")
+data = ExtResource("16_b5nmm")
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("11_vccyl")
+data = ExtResource("17_87nlb")
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("17_oqqmr")
+data = ExtResource("15_bgqo6")
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("18_b5nmm")
+data = ExtResource("19_3uivl")
 
 [node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
 visible = false
@@ -358,6 +387,7 @@ anchor_right = -0.127161
 anchor_bottom = -0.714815
 offset_right = 142.031
 offset_bottom = 238.333
+data = null
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
@@ -367,6 +397,7 @@ anchor_right = 0.445679
 anchor_bottom = -0.70926
 offset_right = 142.031
 offset_bottom = 238.333
+data = null
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
@@ -376,6 +407,7 @@ anchor_right = 0.259259
 anchor_bottom = -0.70926
 offset_right = 142.031
 offset_bottom = 238.333
+data = null
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
@@ -385,6 +417,7 @@ anchor_right = 0.0679011
 anchor_bottom = -0.712963
 offset_right = 142.031
 offset_bottom = 238.333
+data = null
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
@@ -394,11 +427,13 @@ anchor_right = 0.638271
 anchor_bottom = -0.716667
 offset_right = 142.031
 offset_bottom = 238.333
+data = null
 
-[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/PausaBut" to="." method="_on_pausa_but_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Resumir" to="." method="_on_resumir_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/Minimizar" to="GameplayDiv/partida_UI_Handler" method="_on_minimizar_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/PausaBut" to="." method="_on_pausa_but_pressed"]

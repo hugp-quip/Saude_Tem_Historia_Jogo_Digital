@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm86lkl8bhkn"]
+
+[ext_resource type="Script" uid="uid://ce3i2lj7p61po" path="res://Scripts/components/album_container.gd" id="1_rft18"]
+[ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/components/Control_Card.tscn" id="1_y582j"]
+
+[node name="AlbumContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rft18")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00954861
+anchor_top = -0.00462963
+anchor_right = 1.00955
+anchor_bottom = 1.00463
+offset_left = 11.0
+offset_top = 3.0
+offset_right = -11.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AlbumCont" type="HBoxContainer" parent="Layout"]
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Layout/AlbumCont"]
+custom_minimum_size = Vector2(780, 100)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="Layout/AlbumCont/ScrollContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Layout/AlbumCont"]
+custom_minimum_size = Vector2(350, 350)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Layout/AlbumCont/MarginContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Control_Card" parent="Layout/AlbumCont/MarginContainer/VBoxContainer" instance=ExtResource("1_y582j")]
+layout_mode = 2
+
+[node name="Descricao" type="Label" parent="Layout/AlbumCont/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "<Descrição>"
+autowrap_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Layout"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Layout/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="Layout/Buttons/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "sair"
