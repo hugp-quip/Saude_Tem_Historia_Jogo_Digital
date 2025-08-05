@@ -17,7 +17,6 @@ func _ready() -> void:
 
 func _on_start_timer_timeout() -> void:
 	can_start = true
-	print("started")
 
 	
 func _physics_process(_delta: float) -> void:

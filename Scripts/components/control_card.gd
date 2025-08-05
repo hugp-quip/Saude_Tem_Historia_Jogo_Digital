@@ -14,7 +14,7 @@ func is_slot() -> bool:
 
 func _ready() -> void:
 	if Engine.is_editor_hint() and get_parent() is SubViewport:
-		print("a")
+		("a")
 		_load_fake_data()
 
 func make_slot() -> void:

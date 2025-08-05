@@ -22,9 +22,9 @@ func corrigirCartas():
 	var file := DirAccess.open(deprecated.path_join(path_imagens))
 	var str_files = file.get_files()
 	for str_old_id : String in str_files:
-		print(path_imagens.path_join(str_old_id))
+		(path_imagens.path_join(str_old_id))
 		#res://Resources/Cartas_Imagens/0.res
-		print(deprecated.path_join(path_imagens.path_join(str_old_id)))
+		(deprecated.path_join(path_imagens.path_join(str_old_id)))
 		var img : ImageTexture = ResourceLoader.load(deprecated.path_join(path_imagens.path_join(str_old_id)))
 		var carta : CartaRES = ResourceLoader.load(deprecated.path_join(path_cartas.path_join(str_old_id)))
 		

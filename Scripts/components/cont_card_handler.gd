@@ -48,7 +48,7 @@ func _update_has_mouse(slot : ControlCard):
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
-			print("pressed")
+			("pressed")
 			if !slot_with_mouse: return
 			if slot_with_mouse.is_slot() or not (slot_with_mouse.draggable): return
 			if slot_with_mouse.data == null: push_error("De alguma forma tentou mover carta sem dados???")
@@ -59,7 +59,7 @@ func _input(event: InputEvent) -> void:
 		# released
 		else:
 			if is_dragging_card:
-				print("released")		
+				("released")		
 
 				_hide_cursor()
 				# Não foi colocada em slot
@@ -80,7 +80,7 @@ func _input(event: InputEvent) -> void:
 func _show_cursor(card: ControlCard) -> void:
 	is_dragging_card = true
 	mouse_cardOffset = get_global_mouse_position() - card.global_position
-	print("Card clicked!!!! " + ("um slot!" if card.is_slot() else "uma carta!"))
+	#print("Card clicked!!!! " + ("um slot!" if card.is_slot() else "uma carta!"))
 	var lab : Label = card.get_node("Carta_Control_UI_Handler").get_node("ano")
 	cursor_card.get_node("Carta_Control_UI_Handler").get_node("ano").add_theme_color_override("font_color", lab.get_theme_color("font_color"))
 	cursor_card.get_node("Carta_Control_UI_Handler").get_node("ano").text = lab.text 

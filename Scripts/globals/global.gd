@@ -43,7 +43,7 @@ var menus : Dictionary
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("activate_debug"):
-		#print("debug")
+		#("debug")
 		debug = !debug
 
 func _ready() -> void:

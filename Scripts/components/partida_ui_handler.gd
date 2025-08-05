@@ -9,7 +9,7 @@ class_name PartidaUIHandler
 @onready var menu_final_minus_button : TextureButton = menu_final.get_node("Minimizar")
 @onready var pause_button : TextureButton = get_node("PausaBut")
 func update(_partida: PartidaRES) -> void:
-	side_panel.get_node("Rodadas").text = "Rodada: " + str(_partida.rodada_atual+1) + " / " +  str(_partida.n_rodadas)  
+	side_panel.get_node("Rodadas").text = "Rodada: " + str(_partida.rodada_atual) + " / " +  str(_partida.n_rodadas)  
 	side_panel.get_node("Tentativas").text = "Tentativas: " + str(_partida.tentativas_usadas) + " / " +  str(_partida.n_tentativas)  
 
 func enviar_rodada_to_proxima_rodada(new_rodada : Callable):
@@ -17,13 +17,14 @@ func enviar_rodada_to_proxima_rodada(new_rodada : Callable):
 	envio_but.text = "Próxima Rodada"
 	if envio_but.pressed.get_connections().filter(func (d : Dictionary) : return d.callable.get_method() == new_rodada.get_method()).size() > 0:
 		envio_but.pressed.disconnect(new_rodada)
-		
+	envio_but.pressed.disconnect(_on_envio_pressed)
 	envio_but.pressed.connect(new_rodada.bind(reverter_estado_do_envio))
 
 func reverter_estado_do_envio(new_rodada : Callable):
 	var envio_but : Button = side_panel.get_node("Envio")
 	envio_but.text = "Enviar Rodada"
 	envio_but.pressed.disconnect(new_rodada)
+	envio_but.pressed.connect(_on_envio_pressed)
 
 func switch_pause() -> void:
 	if pause_button.texture_normal == Res.pause_texture:

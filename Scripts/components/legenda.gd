@@ -26,7 +26,7 @@ func _ready() -> void:
 	self.theme = load("res://Assets/cardLegendatheme.tres")
 	clip_text = true
 	self.add_theme_font_size_override("font_size", max_font_size)	
-	#print(self.theme.get_font("font_size", "").size)
+	#(self.theme.get_font("font_size", "").size)
 	item_rect_changed.connect(update)
 
 func _set(property: StringName, value: Variant) -> bool:
@@ -47,14 +47,14 @@ func update() -> void:
 func update_font_size_label(label: AutoSizeLabel) -> void:
 	var newText = []
 	#var past_text_length = past_text.length()
-	#print(str(label.text.length()) + "/" + str(past_text_size))
+	#(str(label.text.length()) + "/" + str(past_text_size))
 	for c in label.text.length() - past_text_size:
 		newText.append(label.text[c + past_text.length()-1])
-	#print(newText)
+	#(newText)
 	newText.pop_front()
 	for c in newText:
 		past_text += c
-		#print(past_text)
+		#_text)
 		_update_font_size(label, "font", "font_size", Vector2i(label.min_font_size, label.max_font_size), past_text, label.max_line_number)
 
 func _update_font_size(label: Control, font_name: StringName, font_style_name: StringName, font_size_range: Vector2i, text: String, _max_number_lines: int) -> void:
@@ -71,30 +71,28 @@ func _update_font_size(label: Control, font_name: StringName, font_style_name: S
 	var label_width := label.size.x
 	
 	var font_size := label.get_theme_font_size("font_size")
-	print(font_size)
-	print()
 	
 	line.add_string(text, label.get_theme_font("font_size"), font_size)
 	
 	
 	var text_width := line.get_line_width()
-	# print(str(text_width) + "/" + str(label_width))
-	# print(str(text.length()) + "/" + str(maximum))
-	# print(font_size)
-	# print(label_width)
+	# (str(text_width) + "/" + str(label_width))
+	# (str(text.length()) + "/" + str(maximum))
+	# (font_size)
+	# (label_width)
 	# label.max_line_number = label.size.y/font_size - 1 #if label.size.y/font_size < label.max_line_number else label.max_line_number
-	# print(label.max_line_number)
+	# (label.max_line_number)
 	if label.past_text_size < past_text.length():
-		print("augmenting size")
+		("augmenting size")
 		var lines_in_text := (text.length()/maximum)
 		if lines_in_text > _max_number_lines:
 			push_warning("TEXT OVERFLOW")
 		
 		var line_size := text_width/(lines_in_text if lines_in_text > 1 else 1) 
 
-		print(lines_in_text)
-		#print("line_size: " + str(line_size))
-		print(str(line_size) +"/"+ str( label_width))
+		(lines_in_text)
+		#("line_size: " + str(line_size))
+		(str(line_size) +"/"+ str( label_width))
 		while  line_size > label_width:
 			if font_size <= font_size_range.x:
 				font_size = font_size_range.x
@@ -105,7 +103,7 @@ func _update_font_size(label: Control, font_name: StringName, font_style_name: S
 			text_width = line.get_line_width()
 			line_size = text_width/_max_number_lines
 	else:
-		print("reducing size")
+		("reducing size")
 		var line_size := text_width/_max_number_lines
 		while  line_size <= label_width:
 			if font_size > font_size_range.y:
@@ -119,7 +117,7 @@ func _update_font_size(label: Control, font_name: StringName, font_style_name: S
 
 
 	label.past_text_size = label.past_text.length()
-	print(font_size)
+	(font_size)
 	
 
 
@@ -136,7 +134,7 @@ func _update_font_size(label: Control, font_name: StringName, font_style_name: S
 
 static func  get_max_char_line(_label : Label, font_size : int) -> int:
 	# if not (font_size == _label.min_font_size):
-		# print(font_size)
+		# (font_size)
 	var max_char_line : int = 0
 	var _line = TextLine.new()
 	

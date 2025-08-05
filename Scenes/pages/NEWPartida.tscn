@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ceoel78p5ce80"]
+[gd_scene load_steps=21 format=3 uid="uid://ceoel78p5ce80"]
 
 [ext_resource type="Script" uid="uid://b2u7htb7hh40p" path="res://Scripts/pages/new_partida.gd" id="1_ul87i"]
 [ext_resource type="Script" uid="uid://bslvwt8o7qgwp" path="res://Scripts/components/partida_ui_handler.gd" id="2_cynnd"]
@@ -14,11 +14,12 @@
 [ext_resource type="Script" uid="uid://dm505umj6ohxy" path="res://Scripts/components/cont_slot_manager.gd" id="7_wimq8"]
 [ext_resource type="Texture2D" uid="uid://71g5i8adkgwk" path="res://Assets/pause.png" id="8_xm45g"]
 [ext_resource type="Texture2D" uid="uid://dhwrrynb3ho2c" path="res://Assets/navigate_minus.png" id="9_6tta7"]
-[ext_resource type="Resource" path="res://Resources/Cartas/34.res" id="15_bgqo6"]
-[ext_resource type="Resource" path="res://Resources/Cartas/56.res" id="15_oqqmr"]
-[ext_resource type="Resource" path="res://Resources/Cartas/42.res" id="16_b5nmm"]
-[ext_resource type="Resource" path="res://Resources/Cartas/69.res" id="17_87nlb"]
-[ext_resource type="Resource" path="res://Resources/Cartas/27.res" id="19_3uivl"]
+[ext_resource type="Resource" path="res://Resources/Cartas/9.res" id="15_oqqmr"]
+[ext_resource type="Resource" path="res://Resources/Cartas/58.res" id="16_b5nmm"]
+[ext_resource type="Resource" path="res://Resources/Cartas/19.res" id="17_87nlb"]
+[ext_resource type="Resource" uid="uid://hvw3fbftyiob" path="res://Resources/Cartas/3.res" id="18_3uivl"]
+[ext_resource type="Resource" path="res://Resources/Cartas/36.res" id="19_mkfb2"]
+[ext_resource type="Script" uid="uid://do61mk51t3633" path="res://Scenes/pages/animation_handler.gd" id="20_khit1"]
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -364,50 +365,60 @@ data = ExtResource("17_87nlb")
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("15_bgqo6")
+data = ExtResource("18_3uivl")
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("19_3uivl")
+data = ExtResource("19_mkfb2")
 
 [node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("20_khit1")
 
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
-anchor_left = -0.127161
+anchor_left = 0.0703702
 anchor_top = -0.714815
-anchor_right = -0.127161
+anchor_right = 0.0703702
 anchor_bottom = -0.714815
 offset_right = 142.031
 offset_bottom = 238.333
+mouse_filter = 2
 data = null
+
+[node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card"]
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
-anchor_left = 0.445679
+anchor_left = 0.0666665
 anchor_top = -0.70926
-anchor_right = 0.445679
+anchor_right = 0.0666665
 anchor_bottom = -0.70926
 offset_right = 142.031
 offset_bottom = 238.333
+mouse_filter = 2
 data = null
+
+[node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card2"]
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
-anchor_left = 0.259259
-anchor_top = -0.70926
-anchor_right = 0.259259
-anchor_bottom = -0.70926
+anchor_left = 0.0666665
+anchor_top = -0.718519
+anchor_right = 0.0666665
+anchor_bottom = -0.718519
 offset_right = 142.031
 offset_bottom = 238.333
+mouse_filter = 2
 data = null
+
+[node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card3"]
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
@@ -417,17 +428,27 @@ anchor_right = 0.0679011
 anchor_bottom = -0.712963
 offset_right = 142.031
 offset_bottom = 238.333
+mouse_filter = 2
 data = null
+
+[node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card4"]
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
-anchor_left = 0.638271
-anchor_top = -0.716667
-anchor_right = 0.638271
-anchor_bottom = -0.716667
+anchor_left = 0.0679011
+anchor_top = -0.712963
+anchor_right = 0.0679011
+anchor_bottom = -0.712963
 offset_right = 142.031
 offset_bottom = 238.333
+mouse_filter = 2
 data = null
+
+[node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card5"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(578, 334)
 
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Resumir" to="." method="_on_resumir_pressed"]

@@ -18,13 +18,13 @@ func criar_hand_para_partida() -> Array:
 	#assert(cartas_restantes > 1, "TENTOU CRIAR MÃO COM CARTAS INSUFICIENTES!!!")
 	var _cartaIDS := _get_hand(clamp(cartas_restantes, 2, n_cartas_partida) as int)
 	var cartasRES : Array = []
-	#print(_cartaIDS)
-	var m := Time.get_ticks_msec()
+	
+	
 	for id : int in _cartaIDS:
 		var res := ResourceLoader.load("res://Resources/Cartas/" + str(id)+".res")#Res.pathCartas.path_join(str(id)+".res"))
 		#var res = CartaRES.new()
 		cartasRES.append(res)
-	print((Time.get_ticks_msec() - m)/1000)
+	
 	return cartasRES
 
 

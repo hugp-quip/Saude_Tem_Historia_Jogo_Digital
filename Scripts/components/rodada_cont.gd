@@ -8,6 +8,7 @@ var rodada_config : RodadaRES
 @onready var cardHan : ControlCardHandler = get_node("CardHandler")
 @onready var slotMan : ControlSlotManager = cardHan.slotMan
 @onready var judge : NewRodadaJudge = get_node("RodadaJudge")
+@onready var animHan : RodadaAnimationHandler = get_node("AnimationHandler")
 var partida_state : PartidaRES
 
 func criar_primeira_rodada(partidaState : PartidaRES, cartas : Array)-> void:
@@ -17,29 +18,35 @@ func criar_primeira_rodada(partidaState : PartidaRES, cartas : Array)-> void:
 	cardHan.iniciar(cartas)
 	judge.slotMan = slotMan
 	partida_state = partidaState
+	rodar_inicio_animacao.call_deferred()
 
 func _criar_rodada(cartas : Array) -> void:
-	cardHan.reiniciar(cartas)
+	if cartas.size() != 0:
+		cardHan.reiniciar(cartas)
+		rodar_inicio_animacao.call_deferred()
+
+func rodar_inicio_animacao() -> void:
+	animHan.run_start_animation()
 
 func _on_envio_pressed() -> void:
 	var results = judge.get_rodada_results()
 	if not (results.has_result): return
 
 	var fb : JudgeFeedBack = Res.feedback.instantiate()
-	#print("resultado:", results)	
+	#("resultado:", results)	
 	results.correct_cards.map(func (card : ControlCard) : card.silence() )
 	if results.correct_cards.size() == G.n_cartas:
-		print("ganhou!")
+		("ganhou!")
 		enviar_feedback_padrao(results, fb)
 		finished_with_win.emit(true)
 		return
 	elif partida_state.n_tentativas -1 > partida_state.tentativas_usadas:
 		enviar_feedback_padrao(results, fb)
-		print("tente novamente!")
+		("tente novamente!")
 		partida_state.tentativas_usadas += 1
 		needs_update_ui.emit(partida_state)
 	else:
-		print("perdeu!!!")
+		("perdeu!!!")
 		partida_state.tentativas_usadas += 1
 		enviar_feedback_derrota(results, fb)
 		finished_with_win.emit(false)

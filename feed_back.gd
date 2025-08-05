@@ -13,7 +13,7 @@ enum FEEDBACK{
 }
 
 func criar_feedback( _feedback: int) -> void:
-	#print(FEEDBACK)
+	#(FEEDBACK)
 	match _feedback:
 		FEEDBACK.CORRECT:
 			self.texture = Res.feed_back_correct

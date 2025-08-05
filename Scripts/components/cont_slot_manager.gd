@@ -14,7 +14,7 @@ func inserir_e_criar_cartas(_cartas : Array):
 	
 	if cartas_size == 0 or _cartas == null: push_error("Tentou criar mesa sem _cartas!!!!")
 
-	print("Criando mesa com "+ str(cartas_size) + " cartas.")
+	#print("Criando mesa com "+ str(cartas_size) + " cartas.")
 	if cartas_size > 5:
 		for i in cartas_size - 5:
 			table.add_child(Res.controlCardDisplay.instantiate())

@@ -14,7 +14,6 @@ func _ready() -> void:
 	for i in n_follows:
 		var fl = follow.instantiate()
 		fl.progress = 0.0
-		print(i)
 		fl.fullpath = curve_size
 		fl.wait_time = 1.0*i
 		follows.append(fl)

@@ -28,20 +28,21 @@ func _ready() -> void:
 	
 func updateUI(_state : PartidaRES) -> void:
 	uiHandler.update(_state)
-
+	#util.stop()
 func _on_finished_rodada(win : bool) -> void:
-	updateUI(state)
 	if win:
-		print("ganhou!!!")
 		self.state.rodada_atual += 1
-		if self.state.rodada_atual >= self.state.n_rodadas:
+		if self.state.rodada_atual > self.state.n_rodadas:
+			#self.state.rodada_atual -= 2
 			uiHandler.show_final(win)
+			return 
 		uiHandler.enviar_rodada_to_proxima_rodada(new_rodada)
 		
 	else: # defeat
 
 		uiHandler.show_final(win)
-	
+	updateUI(state)
+
 func new_rodada( reverter_estado_do_envio : Callable):
 	rodadaCont._criar_rodada(baralhoHandler.criar_hand_para_partida())
 	reverter_estado_do_envio.bind(new_rodada).call()

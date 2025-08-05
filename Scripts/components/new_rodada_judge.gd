@@ -17,8 +17,8 @@ func get_rodada_results() -> Dictionary:
 	
 	var correct_order : Array = slotMan.get_correct_card_order()
 	#assert(false)
-	print("correct_order: "+ str(correct_order.map( func (card: CartaRES ) : return card.ano )) )
-	print("table_order: "+ str(table_order.map( func (card: ControlCard ) : return card.data.ano )) )
+	#print("correct_order: "+ str(correct_order.map( func (card: CartaRES ) : return card.ano )) )
+	#print("table_order: "+ str(table_order.map( func (card: ControlCard ) : return card.data.ano )) )
 	var is_incorrect := func (card : ControlCard) -> bool: return card.data.id != correct_order[ table_order.find(card) ].id
 	var equals := func (c1 : CartaRES, c2 : CartaRES) -> bool: return c1.ano.to_int() == c2.ano.to_int()
 

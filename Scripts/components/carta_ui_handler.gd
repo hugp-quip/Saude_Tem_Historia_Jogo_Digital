@@ -20,7 +20,7 @@ func update(_data : CartaRES) -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("activate_debug"):
 		if G.debug:
-			#print(G.debug)
+			#(G.debug)
 			get_node("ano").text = get_parent().data.ano
 		else:
 			get_node("ano").text = ""

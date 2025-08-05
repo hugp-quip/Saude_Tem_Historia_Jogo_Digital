@@ -3,7 +3,7 @@ extends Object
 class_name PartidaRES
 
 @export var baralhoINFO : BarRES
-var rodada_atual : int = 0
+var rodada_atual : int = 1
 var tentativas_usadas: int = 0
 @export var n_rodadas : int
 @export var n_cartas : int = 5

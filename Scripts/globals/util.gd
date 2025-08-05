@@ -11,6 +11,16 @@ func stop() -> void:
 	push_error("UTIL HAS STOPPED PROGRAM!!!")
 	assert(false)
 
+func move_toward_vect(from : Vector2, to: Vector2, delta: float) -> Vector2:
+	var ret : Vector2 = Vector2(0, 0)
+#	if from.x < to.x:
+	ret.x = move_toward(from.x, to.x, delta)
+#	if from.y < to.y:
+	ret.y = move_toward(from.y, to.y, delta)
+
+	return ret
+
+
 func random_card_res():
 	var r : int = random.randi_range(0, 71)
 	var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
