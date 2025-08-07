@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://n84sl2w1051r"]
+
+[sub_resource type="FontVariation" id="FontVariation_ajiaf"]
+
+[resource]
+default_font = SubResource("FontVariation_ajiaf")
+default_font_size = 20

@@ -15,8 +15,12 @@ func get_siblings() -> void:
 	cardHan = rodCont.cardHan
 	slotMan = rodCont.slotMan
 	slot_example = slotMan.table_slots[0] 
+	for i  in animCards.size():
+		animCards[i].get_node("Start_Timer").timeout.connect(start_moving_after_timeout.bind(i))
+
 
 func run_start_animation():
+	cardsToMove = []
 	var hand_slots : = slotMan.hand_slots
 	var times : Array[float] = []
 	for i in hand_slots.size():
@@ -36,6 +40,7 @@ func run_start_animation():
 		)
 	for i in animCards.size():
 		animCards[i].get_node("Start_Timer").one_shot = true
+		animCards[i].get_node("Start_Timer").timeout.disconnect(start_moving_after_timeout)
 		animCards[i].get_node("Start_Timer").timeout.connect(start_moving_after_timeout.bind(i))
 		animCards[i].get_node("Start_Timer").start(times[i]) 
 
@@ -49,10 +54,10 @@ func move_cards(card_to_move : Array[Dictionary], _delta : float) -> void:
 	for data : Dictionary in card_to_move:
 		if data.start and not data.end:
 			#data.card.global_position = util.move_toward_vect(data.card.get_global_rect().position, data.goal, delta*240) 
-			data.card.global_position = data.card.global_position.lerp(data.goal, 0.03)
+			data.card.global_position = data.card.global_position.lerp(data.goal, 0.05)
 		if not (data.end) and ceilf(data.card.get_global_rect().position.y) >= (data.goal.y - 100.0):
 			#data.card.global_position = data.goal
 			data.slot.make_card(data.card.data)
 			data.card.position = card_home
 			data.end = true
-			card_to_move.remove_at(card_to_move.find(data))
+			#card_to_move.remove_at(card_to_move.find(data))

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bketxod4slw0x"]
+
+[node name="performance_label" type="Label"]
+anchors_preset = -1
+anchor_right = 0.164931
+anchor_bottom = 0.0648148
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "<debug text>"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

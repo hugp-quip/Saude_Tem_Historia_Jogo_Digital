@@ -4,23 +4,28 @@ class_name RodadaCont extends Control
 signal finished_with_win( win: bool)
 signal needs_update_ui( state: PartidaRES)
 
-var rodada_config : RodadaRES
+var rodada_state : RodadaRES
 @onready var cardHan : ControlCardHandler = get_node("CardHandler")
 @onready var slotMan : ControlSlotManager = cardHan.slotMan
 @onready var judge : NewRodadaJudge = get_node("RodadaJudge")
 @onready var animHan : RodadaAnimationHandler = get_node("AnimationHandler")
 var partida_state : PartidaRES
 
+
 func criar_primeira_rodada(partidaState : PartidaRES, cartas : Array)-> void:
-	rodada_config = RodadaRES.new()
-	rodada_config.n_cartas = partidaState.n_cartas
-	rodada_config.cards = cartas
+	rodada_state = RodadaRES.new()
+	rodada_state.n_cartas = partidaState.n_cartas
+	rodada_state.cards = cartas
 	cardHan.iniciar(cartas)
 	judge.slotMan = slotMan
 	partida_state = partidaState
 	rodar_inicio_animacao.call_deferred()
 
-func _criar_rodada(cartas : Array) -> void:
+func _criar_rodada(partida_state : PartidaRES, cartas : Array) -> void:
+	rodada_state = RodadaRES.new()
+	rodada_state.n_cartas = partida_state.n_cartas
+	rodada_state.cards = cartas
+
 	if cartas.size() != 0:
 		cardHan.reiniciar(cartas)
 		rodar_inicio_animacao.call_deferred()
@@ -29,18 +34,28 @@ func rodar_inicio_animacao() -> void:
 	animHan.run_start_animation()
 
 func _on_envio_pressed() -> void:
-	var results = judge.get_rodada_results()
+	var results
+	results = judge.get_rodada_results(rodada_state.correct_cards)
+	
+	
+	
 	if not (results.has_result): return
-
+	
 	var fb : JudgeFeedBack = Res.feedback.instantiate()
-	#("resultado:", results)	
+	print(results)
 	results.correct_cards.map(func (card : ControlCard) : card.silence() )
-	if results.correct_cards.size() == G.n_cartas:
+
+	rodada_state.correct_cards.append_array(results.correct_cards.map(func (c : ControlCard) : return c.data))
+
+	partida_state.points += results.points
+	
+	if rodada_state.correct_cards.size() == G.n_cartas:
 		("ganhou!")
 		enviar_feedback_padrao(results, fb)
 		finished_with_win.emit(true)
+		#already_correct_cards = []
 		return
-	elif partida_state.n_tentativas -1 > partida_state.tentativas_usadas:
+	elif partida_state.n_tentativas - 1 > partida_state.tentativas_usadas:
 		enviar_feedback_padrao(results, fb)
 		("tente novamente!")
 		partida_state.tentativas_usadas += 1
@@ -50,6 +65,7 @@ func _on_envio_pressed() -> void:
 		partida_state.tentativas_usadas += 1
 		enviar_feedback_derrota(results, fb)
 		finished_with_win.emit(false)
+		#already_correct_cards = []
 		return
 
 func enviar_feedback_derrota(results : Dictionary, fb : JudgeFeedBack) -> void:

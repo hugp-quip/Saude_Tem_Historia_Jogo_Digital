@@ -1,81 +1,162 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm86lkl8bhkn"]
+[gd_scene load_steps=5 format=3 uid="uid://cm86lkl8bhkn"]
 
 [ext_resource type="Script" uid="uid://ce3i2lj7p61po" path="res://Scripts/components/album_container.gd" id="1_rft18"]
 [ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/components/Control_Card.tscn" id="1_y582j"]
+[ext_resource type="Script" uid="uid://bicotff2noy4g" path="res://Scripts/components/card_inspector.gd" id="2_ytlgu"]
 
-[node name="AlbumContainer" type="Control"]
-layout_mode = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytlgu"]
+bg_color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[node name="AlbumContainer" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ytlgu")
 script = ExtResource("1_rft18")
-
-[node name="Layout" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.00954861
-anchor_top = -0.00462963
-anchor_right = 1.00955
-anchor_bottom = 1.00463
-offset_left = 11.0
-offset_top = 3.0
-offset_right = -11.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="AlbumCont" type="HBoxContainer" parent="Layout"]
-custom_minimum_size = Vector2(0, 550)
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Layout/AlbumCont"]
-custom_minimum_size = Vector2(780, 100)
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="GridContainer" type="GridContainer" parent="Layout/AlbumCont/ScrollContainer"]
-layout_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="MarginContainer" type="MarginContainer" parent="Layout/AlbumCont"]
-custom_minimum_size = Vector2(350, 350)
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Layout/AlbumCont/MarginContainer"]
-custom_minimum_size = Vector2(350, 0)
+[node name="Layout" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Control_Card" parent="Layout/AlbumCont/MarginContainer/VBoxContainer" instance=ExtResource("1_y582j")]
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/Layout"]
 layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="Descricao" type="Label" parent="Layout/AlbumCont/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 150)
+[node name="info" type="HBoxContainer" parent="MarginContainer/Layout/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Data" type="Label" parent="MarginContainer/Layout/MarginContainer3/info"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "<Descrição>"
+text = "<Data>"
+
+[node name="BaralhoCompletion" type="Label" parent="MarginContainer/Layout/MarginContainer3/info"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "<Data>"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="AlbumCont" type="HBoxContainer" parent="MarginContainer/Layout/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Layout/MarginContainer/AlbumCont"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Cards" type="GridContainer" parent="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="CardInspector" type="VBoxContainer" parent="MarginContainer/Layout/MarginContainer/AlbumCont"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 400)
+layout_mode = 2
+alignment = 1
+script = ExtResource("2_ytlgu")
+
+[node name="Control_Card" parent="MarginContainer/Layout/MarginContainer/AlbumCont/CardInspector" instance=ExtResource("1_y582j")]
+custom_minimum_size = Vector2(100, 400)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Layout/MarginContainer/AlbumCont/CardInspector"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="Descricao" type="Label" parent="MarginContainer/Layout/MarginContainer/AlbumCont/CardInspector/ScrollContainer"]
+custom_minimum_size = Vector2(320, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Teve sua primeira edição em Atlanta (EUA) e atualmente é organizada pela IAS (International AIDS society)"
 autowrap_mode = 2
 
-[node name="Buttons" type="HBoxContainer" parent="Layout"]
-custom_minimum_size = Vector2(100, 100)
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/Layout/MarginContainer2"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Layout/Buttons"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Button" type="Button" parent="Layout/Buttons/MarginContainer"]
+[node name="sairbutton" type="Button" parent="MarginContainer/Layout/MarginContainer2/Buttons"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "sair"
+
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/Control_Card" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/Control_Card" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/Control_Card" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/Control_Card" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21764" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21764" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21764" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21764" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21765" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21765" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21765" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21765" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21766" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21766" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21766" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21766" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21767" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21767" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21767" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21767" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21768" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21768" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21768" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21768" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21769" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21769" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21769" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21769" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21770" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21770" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21770" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21770" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21771" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21771" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21771" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21771" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21772" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21772" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21772" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21772" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21773" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21773" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21773" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21773" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21774" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21774" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21774" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21774" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21775" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21775" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21775" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21775" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21776" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21776" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21776" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21776" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21777" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21777" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21777" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21777" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21778" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21778" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21778" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21778" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21779" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21779" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21779" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21779" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21780" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21780" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21780" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21780" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21781" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21781" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21781" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21781" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21782" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21782" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21782" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@21782" method="_on_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/Layout/MarginContainer2/Buttons/sairbutton" to="." method="_on_sairbutton_pressed"]

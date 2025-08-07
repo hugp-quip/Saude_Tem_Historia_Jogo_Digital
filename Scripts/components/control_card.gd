@@ -28,6 +28,14 @@ func make_slot() -> void:
 func silence() -> void:
 	draggable = false
 
+func reveal_ano() -> void:
+	ui_hand.ano.show()
+	ui_hand.ano.text = data.ano
+
+func hide_ano() -> void:
+	ui_hand.ano.hide()
+	
+
 func make_card(_data: CartaRES) -> void:
 	ui_hand.show()
 	ui_hand.clear()

@@ -11,14 +11,15 @@ class_name PartidaUIHandler
 func update(_partida: PartidaRES) -> void:
 	side_panel.get_node("Rodadas").text = "Rodada: " + str(_partida.rodada_atual) + " / " +  str(_partida.n_rodadas)  
 	side_panel.get_node("Tentativas").text = "Tentativas: " + str(_partida.tentativas_usadas) + " / " +  str(_partida.n_tentativas)  
+	%Pontuacao.text = str(_partida.points) +" pts"
 
-func enviar_rodada_to_proxima_rodada(new_rodada : Callable):
+func enviar_rodada_to_proxima_rodada(partida_state : PartidaRES, new_rodada : Callable):
 	var envio_but : Button = side_panel.get_node("Envio")
 	envio_but.text = "Próxima Rodada"
 	if envio_but.pressed.get_connections().filter(func (d : Dictionary) : return d.callable.get_method() == new_rodada.get_method()).size() > 0:
 		envio_but.pressed.disconnect(new_rodada)
 	envio_but.pressed.disconnect(_on_envio_pressed)
-	envio_but.pressed.connect(new_rodada.bind(reverter_estado_do_envio))
+	envio_but.pressed.connect(new_rodada.bind(partida_state, reverter_estado_do_envio))
 
 func reverter_estado_do_envio(new_rodada : Callable):
 	var envio_but : Button = side_panel.get_node("Envio")
@@ -44,9 +45,17 @@ func hide_pause() -> void:
 	menus.get_node("Menu_Pausa").hide()
 	menus.hide()
 	
-func show_final(win : bool) -> void:
+func show_final(state : PartidaRES, win : bool) -> void:
 	pause_overlay.show()
 	menus.show()
+	%Pontuacao_final.text = str(state.points) + " pontos"
+	var mx = state.album.performances.max()
+	print(mx)
+	if  mx == null or state.points > mx:
+		print("adas")
+		%is_novo_melhor.show()
+	
+	%Erros_final.text = str(state.tentativas_usadas) + " erros"
 	var final := menus.get_node("Menu_Final")
 	final.show()
 	pause_button.pressed.disconnect(get_parent().get_parent()._on_pausa_but_pressed)

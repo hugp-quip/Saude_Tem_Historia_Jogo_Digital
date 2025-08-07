@@ -33,7 +33,7 @@ func corrigirCartas():
 		carta.imagem = img2
 		ResourceSaver.save(carta, resources.path_join(path_cartas).path_join(str(carta.id) + ".res"))
 
-func _on_switch(new:int, data: BarRES = null) -> int:
+func _on_switch(new:int, baralho: BarRES = null, album: AlbumRes = null) -> int:
 	#_convert_to_binary()
 	#partidaTESTE()
 	# corrigirCartas()
@@ -44,22 +44,40 @@ func _on_switch(new:int, data: BarRES = null) -> int:
 		get_tree().quit()
 		return 4
 	elif new == G.M.JOGAR:
-		#assert(data != null, "TRIED CREATING PARTIDA WITHOUT BARALHO.")
-		# #assert(not (data.baralhoAT is BaralhoINFO), "TRIED STARTING A PARTIDA WITH THE OLD BARALHO MODEL.")
-		
-		# btw to find a type by name use "type_string(type_off())"
 		atual.queue_free()
 		atual = G.menus[new].instantiate()
 		var part2 : PartidaRES = PartidaRES.new()
-		part2.criar(G.n_cartas, data)
+		part2.criar(G.n_cartas, baralho, album)
 		atual.criar_partida(part2)
 
 		menu.add_child(atual)
 		menu.get_child(1).switch.connect(_on_switch)
 		return 0
 	elif new == G.M.INICIAL:
-		#create_new_baralhos()
+		
 		pass
+	elif new == G.M.ALBUM:
+		atual.queue_free()
+		atual = G.menus[new].instantiate()
+		menu.add_child(atual)
+		var partRES: PartidaRES = PartidaRES.new()
+		partRES.baralhoINFO = baralho
+		partRES.album = album
+		var baralhoHandler : = BaralhoHandler.new()
+		baralhoHandler.load_all_baralho_to_cache(partRES)
+		var _correct_cards : Array[CartaRES] = baralhoHandler.load_cards_in_album_to_cache(partRES)
+		atual.iniciar_album_partida(_correct_cards, baralhoHandler.cartaRESCache, partRES)
+		
+		menu.get_child(1).switch.connect(_on_switch)
+		return 0
+	elif new == G.M.RANKING:
+		atual.queue_free()
+		
+		atual = G.menus[new].instantiate()
+		menu.add_child(atual)
+		menu.get_child(1).switch.connect(_on_switch)
+		atual.iniciar_ranking_page(album)
+		return 0
 	
 	atual.queue_free()
 	atual = G.menus[new].instantiate()

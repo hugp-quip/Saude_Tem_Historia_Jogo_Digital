@@ -8,9 +8,9 @@ var info : String = "INFO/"
 var decks : String = "Resources/Baralhos"
 
 # PartidaResources
-var oLDbaralhoAT : BaralhoINFO # -> info for currently selected decK
-var baralhoAT : BarRES
-var albumAT: AlbumRes # -> album do baralho atual
+#var oLDbaralhoAT : BaralhoINFO # -> info for currently selected decK
+var baralhoAT : BarRES = null
+var albumAT: AlbumRes = null # -> album do baralho atual
 
 var debug : bool = false
 var n_cartas : int = 5
@@ -22,6 +22,7 @@ var rand: = RandomNumberGenerator.new()
 
 var oLDbaralhoCache := []
 var baralhoCache := []
+var albumCache : Array[AlbumRes] = []
 var cartaCache := []
 
 var albumBuffer : Array = [] #Usado na hora de salvar, tem uma cópia de todos os baralhos que foram modificados durante o uso do programa.
@@ -49,13 +50,14 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	pth = "res://"
 	decks = pth.path_join(decks)
+	rand.randomize()
 	menus = { 
 	M.INICIAL : load("res://Scenes/pages/menu_inicial.tscn"),
-	#M.RANKING : load("res://Scenes/pages/ranking.tscn"),
+	M.RANKING : load("res://Scenes/ranking_page.tscn"),
 	M.JOGAR : load("res://Scenes/pages/NEWPartida.tscn"),
 	M.SELECT : load("res://Scenes/pages/select_deck.tscn"),
 	M.LOADING : load("res://Scenes/pages/load_screen.tscn"),
-	#M.ALBUM : load("res://Scenes/pages/album.tscn"),
+	M.ALBUM : load("res://Scenes/components/album_container.tscn"),
 	M.PRIOR : prior
 }
 

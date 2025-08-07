@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm1lndut6vb0i"]
+[gd_scene load_steps=8 format=3 uid="uid://dm1lndut6vb0i"]
 
 [ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="1_5pqb4"]
 [ext_resource type="Script" uid="uid://tmqf5gwiooq3" path="res://Scripts/components/control_card.gd" id="2_wte5v"]
-[ext_resource type="Resource" path="res://Resources/Cartas/46.res" id="3_5pqb4"]
+[ext_resource type="Resource" path="res://Resources/Cartas/15.res" id="3_wte5v"]
 [ext_resource type="Script" uid="uid://y00k35e20g4b" path="res://Scripts/components/carta_control_ui_handler.gd" id="4_rg6ic"]
-[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/46.res" id="5_wte5v"]
+[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/15.res" id="5_7g321"]
 [ext_resource type="Theme" uid="uid://udf724xr0hla" path="res://Assets/cardLegendatheme.tres" id="6_dna6q"]
+[ext_resource type="Texture2D" uid="uid://dc0553u7k7lhi" path="res://Assets/slot.PNG" id="7_wte5v"]
 
 [node name="Control_Card" type="TextureButton"]
 custom_minimum_size = Vector2(100, 0)
@@ -21,7 +22,7 @@ texture_hover = ExtResource("1_5pqb4")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_wte5v")
-data = ExtResource("3_5pqb4")
+data = ExtResource("3_wte5v")
 metadata/_edit_use_anchors_ = true
 
 [node name="Carta_Control_UI_Handler" type="Control" parent="."]
@@ -41,7 +42,7 @@ anchor_left = 0.0866337
 anchor_top = 0.174825
 anchor_right = 0.898515
 anchor_bottom = 0.716783
-texture = ExtResource("5_wte5v")
+texture = ExtResource("5_7g321")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -56,7 +57,7 @@ theme = ExtResource("6_dna6q")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -10
 theme_override_font_sizes/font_size = 15
-text = "1º casos de hanseniase no Brasil"
+text = " Primeira conferência internacional sobre AIDS"
 horizontal_alignment = 1
 autowrap_mode = 2
 clip_text = true
@@ -69,14 +70,40 @@ anchors_preset = -1
 anchor_left = 0.217822
 anchor_top = 0.0594406
 anchor_right = 0.772278
-anchor_bottom = 0.132587
-offset_bottom = 34.08
+anchor_bottom = 0.15944
+offset_bottom = 26.3999
 scale = Vector2(1, 0.52)
 theme = ExtResource("6_dna6q")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="n_da_carta" type="Label" parent="Carta_Control_UI_Handler"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0049505
+anchor_top = -0.0244755
+anchor_right = 0.202971
+anchor_bottom = 0.146853
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Carta_Control_UI_Handler/n_da_carta"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.163265
+anchor_right = 1.05
+anchor_bottom = 0.877551
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_wte5v")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

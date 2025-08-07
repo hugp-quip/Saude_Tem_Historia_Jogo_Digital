@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfhtxx7iaeigf"]
+[gd_scene load_steps=3 format=3 uid="uid://cfhtxx7iaeigf"]
 
 [ext_resource type="Script" uid="uid://rgeqbknrvu7u" path="res://Scripts/pages/select_deck.gd" id="1_tu0rh"]
+[ext_resource type="Theme" uid="uid://n84sl2w1051r" path="res://testFontTheme.tres" id="2_anx2g"]
 
 [node name="SelectDeck" type="Control"]
 layout_mode = 3
@@ -11,130 +12,150 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tu0rh")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0295139
-anchor_top = 0.166667
-anchor_right = 0.530382
-anchor_bottom = 0.742284
-metadata/_edit_use_anchors_ = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="GridContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="UI" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Menu" type="HBoxContainer" parent="MarginContainer/UI"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="BaralhoSelector" type="VBoxContainer" parent="MarginContainer/UI/Menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SelectedInfo" type="HBoxContainer" parent="MarginContainer/UI/Menu/BaralhoSelector"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Voltar" type="Button" parent="."]
+[node name="albComplete" type="Label" parent="MarginContainer/UI/Menu/BaralhoSelector/SelectedInfo"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("2_anx2g")
+text = "Album: null/null"
+metadata/_edit_use_anchors_ = true
+
+[node name="maPont" type="Label" parent="MarginContainer/UI/Menu/BaralhoSelector/SelectedInfo"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("2_anx2g")
+text = "Maior pontuação = null"
+metadata/_edit_use_anchors_ = true
+
+[node name="nomeDeck" type="Label" parent="MarginContainer/UI/Menu/BaralhoSelector/SelectedInfo"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("2_anx2g")
+text = "None"
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/UI/Menu/BaralhoSelector"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="BarButs" type="VBoxContainer" parent="MarginContainer/UI/Menu/BaralhoSelector/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BaralhoInfoOptions" type="VBoxContainer" parent="MarginContainer/UI/Menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="desclabel" type="Label" parent="MarginContainer/UI/Menu/BaralhoInfoOptions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Descrição:"
+metadata/_edit_use_anchors_ = true
+
+[node name="Descrição" type="Panel" parent="MarginContainer/UI/Menu/BaralhoInfoOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="DescText" type="Label" parent="MarginContainer/UI/Menu/BaralhoInfoOptions/Descrição"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0269097
-anchor_top = 0.83642
-anchor_right = 0.22743
-anchor_bottom = 0.932099
+anchor_left = 0.0103306
+anchor_top = 0.00273973
+anchor_right = 1.00207
+anchor_bottom = 1.00274
+autowrap_mode = 2
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SeeSpecialInfo" type="HBoxContainer" parent="MarginContainer/UI/Menu/BaralhoInfoOptions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="SeeRanking" type="Button" parent="MarginContainer/UI/Menu/BaralhoInfoOptions/SeeSpecialInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Ver Rank"
+metadata/_edit_use_anchors_ = true
+
+[node name="SeeAlb" type="Button" parent="MarginContainer/UI/Menu/BaralhoInfoOptions/SeeSpecialInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Ver Album"
+metadata/_edit_use_anchors_ = true
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/UI"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+alignment = 1
+
+[node name="Voltar" type="Button" parent="MarginContainer/UI/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 text = "voltar
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="JOGAR" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.759548
-anchor_top = 0.83642
-anchor_right = 0.960069
-anchor_bottom = 0.932099
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/UI/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/UI/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JOGAR" type="Button" parent="MarginContainer/UI/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 disabled = true
 text = "jogar
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="SeeAlb" type="Button" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.826389
-anchor_top = 0.746914
-anchor_right = 0.957465
-anchor_bottom = 0.819444
-disabled = true
-text = "Ver Album"
-metadata/_edit_use_anchors_ = true
-
-[node name="SeeRanking" type="Button" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.672743
-anchor_top = 0.746914
-anchor_right = 0.803819
-anchor_bottom = 0.819444
-disabled = true
-text = "Ver Rank"
-metadata/_edit_use_anchors_ = true
-
-[node name="Descrição" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.646701
-anchor_top = 0.160494
-anchor_right = 0.965277
-anchor_bottom = 0.745371
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="Descrição"]
-layout_mode = 0
-anchor_left = 0.027248
-anchor_top = -0.189944
-anchor_right = 0.564033
-anchor_bottom = -0.0195531
-offset_right = 1.52588e-05
-theme_override_font_sizes/font_size = 40
-text = "Descrição:"
-metadata/_edit_use_anchors_ = true
-
-[node name="DescText" type="Label" parent="Descrição"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0108992
-anchor_top = 0.0105541
-anchor_right = 1.00273
-anchor_bottom = 1.00264
-autowrap_mode = 2
-clip_text = true
-metadata/_edit_use_anchors_ = true
-
-[node name="albComplete" type="Label" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.178819
-anchor_top = 0.115741
-anchor_right = 0.301216
-anchor_bottom = 0.151235
-text = "Album: null/null"
-metadata/_edit_use_anchors_ = true
-
-[node name="maPont" type="Label" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.307292
-anchor_top = 0.115741
-anchor_right = 0.480035
-anchor_bottom = 0.151235
-offset_right = -20.0
-text = "Maior pontuação = null"
-metadata/_edit_use_anchors_ = true
-
-[node name="nomeDeck" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0329861
-anchor_top = 0.12037
-anchor_right = 0.0694444
-anchor_bottom = 0.155864
-text = "None"
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="Voltar" to="." method="_on_voltar_pressed"]
-[connection signal="pressed" from="JOGAR" to="." method="_on_jogar_pressed"]
-[connection signal="pressed" from="SeeAlb" to="." method="_on_see_alb_pressed"]
-[connection signal="pressed" from="SeeRanking" to="." method="_on_see_ranking_pressed"]
+[connection signal="pressed" from="MarginContainer/UI/Menu/BaralhoInfoOptions/SeeSpecialInfo/SeeRanking" to="." method="_on_see_ranking_pressed"]
+[connection signal="pressed" from="MarginContainer/UI/Menu/BaralhoInfoOptions/SeeSpecialInfo/SeeAlb" to="." method="_on_see_alb_pressed"]
+[connection signal="pressed" from="MarginContainer/UI/Buttons/Voltar" to="." method="_on_voltar_pressed"]
+[connection signal="pressed" from="MarginContainer/UI/Buttons/JOGAR" to="." method="_on_jogar_pressed"]

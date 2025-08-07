@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c11ilfxjdhohl"]
+[gd_scene load_steps=4 format=3 uid="uid://c11ilfxjdhohl"]
 
 [ext_resource type="Script" uid="uid://d1d2tofbx2vky" path="res://Scripts/components/bar_but.gd" id="1_035ux"]
+[ext_resource type="Texture2D" uid="uid://cwu4e7abauq3r" path="res://Assets/Crt.PNG" id="2_kegjb"]
+[ext_resource type="Texture2D" uid="uid://djy6di58rugpi" path="res://Assets/lupa.png" id="3_ts5jb"]
 
 [node name="BarBut" type="Button"]
 custom_minimum_size = Vector2(530, 90)
@@ -8,29 +10,85 @@ anchors_preset = -1
 anchor_left = -0.00130208
 anchor_right = 0.458767
 anchor_bottom = 0.140432
-offset_left = 1.5
-offset_right = -1.5
+offset_left = -0.500004
+offset_right = -0.499573
+offset_bottom = -0.999939
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_035ux")
-metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.741935
-anchor_top = 0.032967
-anchor_right = 0.916509
-anchor_bottom = 0.978022
-expand_mode = 1
+anchor_top = -0.111111
+anchor_right = 1.0
+anchor_bottom = 1.11111
+offset_top = 10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="nome" type="Label" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(290, 70)
+layout_mode = 2
+anchor_left = 0.0156863
+anchor_right = 0.584314
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "BaralhoNome completas/ nCartas"
+vertical_alignment = 1
+autowrap_mode = 1
+text_overrun_behavior = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="BaralhoINFO" type="Label" parent="."]
-layout_mode = 0
-anchor_left = 0.0227704
-anchor_top = 0.296703
-anchor_right = 0.519924
-anchor_bottom = 0.78022
-offset_right = -83.0
-text = "BaralhoNome completas/ nCartas"
-metadata/_edit_use_anchors_ = true
+[node name="Imagem" type="TextureRect" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = 4.0
+offset_right = -36.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("2_kegjb")
+expand_mode = 1
+
+[node name="SeeBar" type="TextureButton" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.4
+offset_left = -29.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+mouse_force_pass_scroll_events = false
+texture_normal = ExtResource("3_ts5jb")
+texture_pressed = ExtResource("3_ts5jb")
+texture_hover = ExtResource("3_ts5jb")
+ignore_texture_size = true
+stretch_mode = 5

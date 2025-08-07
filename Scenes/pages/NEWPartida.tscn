@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ceoel78p5ce80"]
+[gd_scene load_steps=23 format=3 uid="uid://ceoel78p5ce80"]
 
 [ext_resource type="Script" uid="uid://b2u7htb7hh40p" path="res://Scripts/pages/new_partida.gd" id="1_ul87i"]
 [ext_resource type="Script" uid="uid://bslvwt8o7qgwp" path="res://Scripts/components/partida_ui_handler.gd" id="2_cynnd"]
@@ -14,12 +14,14 @@
 [ext_resource type="Script" uid="uid://dm505umj6ohxy" path="res://Scripts/components/cont_slot_manager.gd" id="7_wimq8"]
 [ext_resource type="Texture2D" uid="uid://71g5i8adkgwk" path="res://Assets/pause.png" id="8_xm45g"]
 [ext_resource type="Texture2D" uid="uid://dhwrrynb3ho2c" path="res://Assets/navigate_minus.png" id="9_6tta7"]
-[ext_resource type="Resource" path="res://Resources/Cartas/9.res" id="15_oqqmr"]
-[ext_resource type="Resource" path="res://Resources/Cartas/58.res" id="16_b5nmm"]
-[ext_resource type="Resource" path="res://Resources/Cartas/19.res" id="17_87nlb"]
-[ext_resource type="Resource" uid="uid://hvw3fbftyiob" path="res://Resources/Cartas/3.res" id="18_3uivl"]
-[ext_resource type="Resource" path="res://Resources/Cartas/36.res" id="19_mkfb2"]
+[ext_resource type="Texture2D" uid="uid://b6dt2dsdgucgb" path="res://Assets/album_button.png" id="10_b5nmm"]
+[ext_resource type="Resource" path="res://Resources/Cartas/11.res" id="16_87nlb"]
+[ext_resource type="Resource" path="res://Resources/Cartas/12.res" id="17_3uivl"]
+[ext_resource type="Resource" path="res://Resources/Cartas/68.res" id="18_mkfb2"]
+[ext_resource type="Resource" uid="uid://b3see1c35negs" path="res://Resources/Cartas/10.res" id="19_khit1"]
+[ext_resource type="Resource" path="res://Resources/Cartas/41.res" id="20_hvnaw"]
 [ext_resource type="Script" uid="uid://do61mk51t3633" path="res://Scenes/pages/animation_handler.gd" id="20_khit1"]
+[ext_resource type="PackedScene" uid="uid://cm86lkl8bhkn" path="res://Scenes/components/album_container.tscn" id="22_87nlb"]
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -28,7 +30,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 script = ExtResource("1_ul87i")
+metadata/_edit_use_anchors_ = true
 
 [node name="BaralhoHandler" type="Node" parent="."]
 script = ExtResource("3_hiw0w")
@@ -70,9 +74,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0693069
-anchor_top = 0.0353817
+anchor_top = 0.018622
 anchor_right = 0.930693
-anchor_bottom = 0.558659
+anchor_bottom = 0.644323
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -94,16 +98,25 @@ text = "Enviar Rodada"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "??????"
+text = "rodAtual/nRods"
+horizontal_alignment = 1
 
 [node name="Tentativas" type="Label" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "??????"
+text = "tentAtual/nTents"
+horizontal_alignment = 1
+
+[node name="Pontuacao" type="Label" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "XXXXX pts"
+horizontal_alignment = 1
 
 [node name="Menus_Container" type="Control" parent="GameplayDiv/partida_UI_Handler"]
-visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -111,6 +124,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
@@ -222,12 +236,56 @@ theme_override_font_sizes/font_size = 30
 text = "Sair
 "
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.094625
+anchor_top = 0.229583
+anchor_right = 0.873809
+anchor_bottom = 0.574955
+metadata/_edit_use_anchors_ = true
+
+[node name="Pontuacao_final" type="Label" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "<pontuação final>"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="is_novo_melhor" type="Label" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Nova Melhor Pontuação!"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Erros_final" type="Label" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "<tentativas usadas>"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
 [node name="Resultado" type="Label" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.0547055
 anchor_top = 0.0499092
 anchor_right = 0.916687
-anchor_bottom = 0.395281
+anchor_bottom = 0.26951
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 text = "<Resultado>"
@@ -250,11 +308,12 @@ metadata/_edit_use_anchors_ = true
 [node name="PausaBut" type="TextureButton" parent="GameplayDiv/partida_UI_Handler"]
 top_level = true
 z_index = 1
-layout_mode = 0
-anchor_left = 0.917247
-anchor_top = 0.0260737
-anchor_right = 0.980836
-anchor_bottom = 0.13497
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.93374
+anchor_top = 0.0445922
+anchor_right = 0.997329
+anchor_bottom = 0.153489
 offset_left = -3.66907
 offset_top = 0.104227
 offset_right = -3.92334
@@ -267,12 +326,41 @@ metadata/_edit_use_anchors_ = true
 [node name="fps" type="Label" parent="GameplayDiv/partida_UI_Handler"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.00153302
-anchor_right = 0.126736
-anchor_bottom = 0.0694342
+anchor_left = 0.801394
+anchor_top = 0.0981592
+anchor_right = 0.9277
+anchor_bottom = 0.162577
 theme_override_font_sizes/font_size = 30
 text = "fps = "
 script = ExtResource("4_i2se5")
+metadata/_edit_use_anchors_ = true
+
+[node name="AlbumButton" type="TextureButton" parent="GameplayDiv/partida_UI_Handler"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021777
+anchor_top = -0.018405
+anchor_right = 0.252613
+anchor_bottom = 0.161044
+texture_normal = ExtResource("10_b5nmm")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="GameplayDiv/partida_UI_Handler/AlbumButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.206573
+anchor_top = 0.230769
+anchor_right = 0.99061
+anchor_bottom = 0.820513
+offset_right = -9.0
+theme_override_font_sizes/font_size = 50
+text = "Álbum"
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="RodadaCont" type="Control" parent="GameplayDiv"]
@@ -283,6 +371,7 @@ anchor_right = 0.986934
 anchor_bottom = 0.998156
 script = ExtResource("5_vsclk")
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="RodadaJudge" type="Node" parent="GameplayDiv/RodadaCont"]
 script = ExtResource("7_6tta7")
@@ -353,23 +442,23 @@ theme_override_constants/separation = 5
 
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("15_oqqmr")
+data = ExtResource("16_87nlb")
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("16_b5nmm")
+data = ExtResource("17_3uivl")
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("17_87nlb")
+data = ExtResource("18_mkfb2")
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("18_3uivl")
+data = ExtResource("19_khit1")
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("19_mkfb2")
+data = ExtResource("20_hvnaw")
 
 [node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
 layout_mode = 1
@@ -380,6 +469,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("20_khit1")
+metadata/_edit_lock_ = true
 
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/AnimationHandler" instance=ExtResource("7_npai1")]
 layout_mode = 1
@@ -446,9 +536,10 @@ data = null
 
 [node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card5"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="AlbumContainer" parent="." instance=ExtResource("22_87nlb")]
+unique_name_in_owner = true
 visible = false
-position = Vector2(578, 334)
+layout_mode = 1
 
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Resumir" to="." method="_on_resumir_pressed"]
@@ -458,3 +549,4 @@ position = Vector2(578, 334)
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/Minimizar" to="GameplayDiv/partida_UI_Handler" method="_on_minimizar_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/PausaBut" to="." method="_on_pausa_but_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/AlbumButton" to="." method="_on_album_button_pressed"]
