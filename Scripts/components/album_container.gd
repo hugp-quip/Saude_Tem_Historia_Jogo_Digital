@@ -12,7 +12,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		var n_cards := 20
 		for i in n_cards:
-			var card : ControlCard = load("res://Scenes/Components/Control_Card.tscn").instantiate()
+			var card : ControlCard = load("res://Scenes/Components/control_card.tscn").instantiate()
 			card.criar_carta_display.call_deferred(util.random_card_res())
 			card.custom_minimum_size = Vector2(170, 300)
 			card.get_node("Carta_Control_UI_Handler/n_da_carta").show()
@@ -42,7 +42,7 @@ func iniciar_album_partida(correct_cards : Array[CartaRES], all_cards : Array[Ca
 		for card : CartaRES in all_cards:
 			var card_local_id = partida_state.baralhoINFO.cartas.find(card.id) + 1
 			# cards_positions.append(card_local_id - 1)
-			var display_card : ControlCard = load("res://Scenes/Components/Control_Card.tscn").instantiate()
+			var display_card : ControlCard = Res.controlCardDisplay.instantiate()
 			display_card.custom_minimum_size = Vector2(170, 300)
 			display_card.get_node("Carta_Control_UI_Handler/n_da_carta").show()
 			

@@ -1,13 +1,11 @@
 @tool
 extends Control
-
-
 signal switch(new:int, data : Dictionary)
+
 var barBut : PackedScene = load("res://Scenes/components/bar_but.tscn")
-#var is_first_time : bool = true
 var baralhoAT: BarRES
 var albumAT : AlbumRes
-
+@export var node : Node
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		for i in 5:

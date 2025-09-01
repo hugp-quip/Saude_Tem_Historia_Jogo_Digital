@@ -23,4 +23,3 @@ func _physics_process(_delta: float) -> void:
 	if not (self.is_main_scene):
 		if self.progress >= self.fullpath - 10: card.make_card(util.random_card_res())
 		if can_start: self.progress += 240*_delta
-
