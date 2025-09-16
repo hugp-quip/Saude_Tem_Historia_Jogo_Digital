@@ -3,9 +3,15 @@ extends Control
 
 @onready var menu := get_node("Menu")
 @onready var atual : Node = menu.get_child(0)
-
+var testbuffer 
 func _ready() -> void:
 	menu.get_child(0).switch.connect(_on_switch)
+	testbuffer = load("res://Resources.pck")
+	print(testbuffer)
+	if ProjectSettings.load_resource_pack("res://Resources.pck", true):
+		print("loaded decks!")
+	else:
+		print("didn't load decks!")
 
 # func partidaTESTE()
 	# atual.queue_free()
@@ -39,6 +45,7 @@ func _on_switch(new:int, baralho: BarRES = null, album: AlbumRes = null) -> int:
 	# corrigirCartas()
 	# get_tree().quit()
 	# return 1
+
 	if new == G.M.EXIT:
 		#savebeforequiting()
 		get_tree().quit()

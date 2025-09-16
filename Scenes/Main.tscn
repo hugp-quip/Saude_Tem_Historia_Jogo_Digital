@@ -25,6 +25,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="screensize" type="Label" parent="Panel"]
+visible = false
 layout_direction = 2
 layout_mode = 1
 anchors_preset = -1
@@ -42,6 +43,7 @@ horizontal_alignment = 2
 script = ExtResource("3_kln2b")
 
 [node name="fps" type="Label" parent="Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.87066

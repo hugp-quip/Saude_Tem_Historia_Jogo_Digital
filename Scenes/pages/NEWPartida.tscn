@@ -15,11 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://71g5i8adkgwk" path="res://Assets/pause.png" id="8_xm45g"]
 [ext_resource type="Texture2D" uid="uid://dhwrrynb3ho2c" path="res://Assets/navigate_minus.png" id="9_6tta7"]
 [ext_resource type="Texture2D" uid="uid://b6dt2dsdgucgb" path="res://Assets/album_button.png" id="10_b5nmm"]
-[ext_resource type="Resource" uid="uid://hvw3fbftyiob" path="res://Resources/Cartas/3.res" id="16_87nlb"]
-[ext_resource type="Resource" path="res://Resources/Cartas/19.res" id="17_3uivl"]
-[ext_resource type="Resource" path="res://Resources/Cartas/64.res" id="18_mkfb2"]
-[ext_resource type="Resource" path="res://Resources/Cartas/61.res" id="19_khit1"]
-[ext_resource type="Resource" path="res://Resources/Cartas/6.res" id="20_hvnaw"]
+[ext_resource type="Resource" path="res://Resources/Cartas/28.res" id="16_87nlb"]
+[ext_resource type="Resource" path="res://Resources/Cartas/54.res" id="17_3uivl"]
+[ext_resource type="Resource" uid="uid://bg7ygqnwju3tc" path="res://Resources/Cartas/0.res" id="18_mkfb2"]
+[ext_resource type="Resource" path="res://Resources/Cartas/57.res" id="19_khit1"]
+[ext_resource type="Resource" path="res://Resources/Cartas/5.res" id="20_hvnaw"]
 [ext_resource type="Script" uid="uid://do61mk51t3633" path="res://Scenes/pages/animation_handler.gd" id="20_khit1"]
 [ext_resource type="PackedScene" uid="uid://cm86lkl8bhkn" path="res://Scenes/components/album_container.tscn" id="22_87nlb"]
 
@@ -324,6 +324,7 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="fps" type="Label" parent="GameplayDiv/partida_UI_Handler"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.801394
