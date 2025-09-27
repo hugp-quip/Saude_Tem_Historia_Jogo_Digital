@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm1lndut6vb0i"]
+[gd_scene load_steps=9 format=3 uid="uid://dm1lndut6vb0i"]
 
 [ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="1_5pqb4"]
 [ext_resource type="Script" uid="uid://tmqf5gwiooq3" path="res://Scripts/components/control_card.gd" id="2_wte5v"]
-[ext_resource type="Resource" path="res://Resources/Cartas/44.res" id="3_cfgrt"]
+[ext_resource type="Resource" path="res://Resources/Cartas/11.res" id="3_mloi4"]
 [ext_resource type="Script" uid="uid://y00k35e20g4b" path="res://Scripts/components/carta_control_ui_handler.gd" id="4_rg6ic"]
-[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/44.res" id="5_mloi4"]
+[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/11.res" id="5_cgihc"]
 [ext_resource type="Theme" uid="uid://udf724xr0hla" path="res://Assets/cardLegendatheme.tres" id="6_dna6q"]
+[ext_resource type="Script" uid="uid://d11kfgsd6jgt" path="res://ExternalAssets/addons/AutoSizeText/ui/AutoSizeLabel.gd" id="7_mloi4"]
 [ext_resource type="Texture2D" uid="uid://dc0553u7k7lhi" path="res://Assets/slot.PNG" id="7_wte5v"]
 
 [node name="Control_Card" type="TextureButton"]
@@ -22,8 +23,9 @@ texture_hover = ExtResource("1_5pqb4")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_wte5v")
-data = ExtResource("3_cfgrt")
+data = ExtResource("3_mloi4")
 metadata/_edit_use_anchors_ = true
+metadata/_edit_vertical_guides_ = [-42.0]
 
 [node name="Carta_Control_UI_Handler" type="Control" parent="."]
 layout_mode = 1
@@ -36,32 +38,37 @@ mouse_filter = 2
 script = ExtResource("4_rg6ic")
 
 [node name="Imagem" type="TextureRect" parent="Carta_Control_UI_Handler"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0866337
-anchor_top = 0.174825
-anchor_right = 0.898515
-anchor_bottom = 0.716783
-texture = ExtResource("5_mloi4")
+layout_mode = 2
+anchor_left = 0.0544555
+anchor_top = 0.153846
+anchor_right = 0.940595
+anchor_bottom = 0.573427
+offset_bottom = -1.52588e-05
+size_flags_vertical = 3
+texture = ExtResource("5_cgihc")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Legenda" type="Label" parent="Carta_Control_UI_Handler"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0668317
-anchor_top = 0.748252
-anchor_right = 0.933168
-anchor_bottom = 0.954545
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+anchor_left = 0.0544555
+anchor_top = 0.576923
+anchor_right = 0.940595
+anchor_bottom = 0.926574
+size_flags_vertical = 6
 theme = ExtResource("6_dna6q")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -10
-theme_override_font_sizes/font_size = 15
-text = "1º casos de meningite no Brasil"
+theme_override_font_sizes/font_size = 29
+text = "Cazuza revela ser soropositivo"
 horizontal_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
 clip_text = true
 text_overrun_behavior = 4
+script = ExtResource("7_mloi4")
+watch_text_change = true
+metadata/_custom_type_script = "uid://d11kfgsd6jgt"
 metadata/_edit_use_anchors_ = true
 
 [node name="ano" type="Label" parent="Carta_Control_UI_Handler"]
@@ -76,6 +83,7 @@ scale = Vector2(1, 0.52)
 theme = ExtResource("6_dna6q")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
+text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true

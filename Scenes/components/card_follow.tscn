@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdqlrb4ysex8r" path="res://Scripts/pages/Card_Follow.gd" id="1_76xe2"]
 [ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/components/control_card.tscn" id="2_xrypv"]
-[ext_resource type="Resource" path="res://Resources/Cartas/60.res" id="3_xrypv"]
+[ext_resource type="Resource" path="res://Resources/Cartas/19.res" id="3_xrypv"]
 
 [node name="Card_Follow" type="PathFollow2D"]
 progress = 15768.0
@@ -10,7 +10,11 @@ rotates = false
 script = ExtResource("1_76xe2")
 
 [node name="Control_Card" parent="." instance=ExtResource("2_xrypv")]
+clip_contents = true
 custom_minimum_size = Vector2(100, 150)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 scale = Vector2(0.75, 0.75)
 data = ExtResource("3_xrypv")
 

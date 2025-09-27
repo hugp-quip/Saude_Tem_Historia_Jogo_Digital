@@ -12,6 +12,7 @@ func _ready() -> void:
 	start_timer.start(wait_time)
 	card.scale = Vector2(0.75, 0.75)
 	card.make_card(util.random_card_res())
+	card.get_node("Carta_Control_UI_Handler/Legenda").watch_text_change = false
 	card.get_node("Carta_Control_UI_Handler/Legenda").add_theme_constant_override("line_spacing", 0)
 	card.get_node("Carta_Control_UI_Handler/Legenda").add_theme_font_size_override("font_size", 10)
 

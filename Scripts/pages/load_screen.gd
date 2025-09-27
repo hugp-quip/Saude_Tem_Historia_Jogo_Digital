@@ -9,12 +9,12 @@ var testbuffer
 func _ready():
 	# call_deferred("emit_signal", "switch", G.M.INICIAL)
 	# return 0
-	testbuffer = load("res://Resources.pck")
-	print(testbuffer)
-	if ProjectSettings.load_resource_pack("res://Resources.pck", true):
-		print("loaded decks!")
-	else:
-		print("didn't load decks!")
+	# testbuffer = load("res://Resources.pck")
+	# print(testbuffer)
+	# if ProjectSettings.load_resource_pack("res://Resources.pck", true):
+	# 	print("loaded decks!")
+	# else:
+	# 	print("didn't load decks!")
 
 	baralhoToLoad = G.get_baralhoToLoad()
 	# if baralhoToLoad.size() == 0:

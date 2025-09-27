@@ -54,7 +54,7 @@ func move_cards(card_to_move : Array[Dictionary], _delta : float) -> void:
 	for data : Dictionary in card_to_move:
 		if data.start and not data.end:
 			#data.card.global_position = util.move_toward_vect(data.card.get_global_rect().position, data.goal, delta*240) 
-			data.card.global_position = data.card.global_position.lerp(data.goal, 0.05)
+			data.card.global_position = data.card.global_position.lerp(data.goal, 0.1)
 		if not (data.end) and ceilf(data.card.get_global_rect().position.y) >= (data.goal.y - 100.0):
 			#data.card.global_position = data.goal
 			data.slot.make_card(data.card.data)
