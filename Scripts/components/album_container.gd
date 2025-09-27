@@ -12,7 +12,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		var n_cards := 20
 		for i in n_cards:
-			var card : ControlCard = load("res://Scenes/Components/control_card.tscn").instantiate()
+			var card : ControlCard = load("res://Scenes/Components/Control_Card.tscn").instantiate()
 			card.criar_carta_display.call_deferred(util.random_card_res())
 			card.custom_minimum_size = Vector2(170, 300)
 			card.get_node("Carta_Control_UI_Handler/n_da_carta").show()

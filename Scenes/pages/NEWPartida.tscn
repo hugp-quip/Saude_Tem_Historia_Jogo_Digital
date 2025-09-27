@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ceoel78p5ce80"]
+[gd_scene load_steps=25 format=3 uid="uid://ceoel78p5ce80"]
 
 [ext_resource type="Script" uid="uid://b2u7htb7hh40p" path="res://Scripts/pages/new_partida.gd" id="1_ul87i"]
 [ext_resource type="Script" uid="uid://bslvwt8o7qgwp" path="res://Scripts/components/partida_ui_handler.gd" id="2_cynnd"]
@@ -7,21 +7,23 @@
 [ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="3_vsclk"]
 [ext_resource type="Script" uid="uid://bisb84kcg8sa1" path="res://Scripts/components/label.gd" id="4_i2se5"]
 [ext_resource type="Script" uid="uid://dv1s4vvwa6xo8" path="res://Scripts/components/rodada_cont.gd" id="5_vsclk"]
+[ext_resource type="Script" uid="uid://bnaosc552evuy" path="res://ExternalAssets/addons/AutoSizeText/ui/AutoSizeButton.gd" id="6_3uivl"]
 [ext_resource type="Script" uid="uid://bgggtfu1e3ln" path="res://Scripts/components/new_rodada_judge.gd" id="7_6tta7"]
 [ext_resource type="Script" uid="uid://kco3ei3fvt33" path="res://Scripts/components/cont_card_handler.gd" id="7_fuh8x"]
-[ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/components/control_card.tscn" id="7_npai1"]
+[ext_resource type="Script" uid="uid://d11kfgsd6jgt" path="res://ExternalAssets/addons/AutoSizeText/ui/AutoSizeLabel.gd" id="7_mkfb2"]
+[ext_resource type="PackedScene" uid="uid://bedjj088wyv" path="res://Scenes/components/Control_Card.tscn" id="7_npai1"]
 [ext_resource type="Texture2D" uid="uid://dc0553u7k7lhi" path="res://Assets/slot.PNG" id="7_ulsrg"]
 [ext_resource type="Script" uid="uid://dm505umj6ohxy" path="res://Scripts/components/cont_slot_manager.gd" id="7_wimq8"]
 [ext_resource type="Texture2D" uid="uid://71g5i8adkgwk" path="res://Assets/pause.png" id="8_xm45g"]
 [ext_resource type="Texture2D" uid="uid://dhwrrynb3ho2c" path="res://Assets/navigate_minus.png" id="9_6tta7"]
 [ext_resource type="Texture2D" uid="uid://b6dt2dsdgucgb" path="res://Assets/album_button.png" id="10_b5nmm"]
-[ext_resource type="Resource" uid="uid://b81elitjl67w2" path="res://Resources/Cartas/23.res" id="16_87nlb"]
-[ext_resource type="Resource" path="res://Resources/Cartas/71.res" id="17_3uivl"]
-[ext_resource type="Resource" path="res://Resources/Cartas/29.res" id="18_khit1"]
-[ext_resource type="Resource" uid="uid://bg7ygqnwju3tc" path="res://Resources/Cartas/0.res" id="18_mkfb2"]
-[ext_resource type="Resource" path="res://Resources/Cartas/35.res" id="20_hvnaw"]
+[ext_resource type="Resource" path="res://Resources/Cartas/50.res" id="18_mkfb2"]
+[ext_resource type="Resource" path="res://Resources/Cartas/44.res" id="19_khit1"]
+[ext_resource type="Resource" path="res://Resources/Cartas/11.res" id="20_hvnaw"]
 [ext_resource type="Script" uid="uid://do61mk51t3633" path="res://Scenes/pages/animation_handler.gd" id="20_khit1"]
+[ext_resource type="Resource" path="res://Resources/Cartas/42.res" id="21_y1yl5"]
 [ext_resource type="PackedScene" uid="uid://cm86lkl8bhkn" path="res://Scenes/components/album_container.tscn" id="22_87nlb"]
+[ext_resource type="Resource" path="res://Resources/Cartas/63.res" id="22_hhgcm"]
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -92,29 +94,55 @@ metadata/_edit_use_anchors_ = true
 [node name="Envio" type="Button" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_font_sizes/font_size = 1
 text = "Enviar Rodada"
+clip_text = true
+script = ExtResource("6_3uivl")
+button_text = "Finalizar Rodada"
+metadata/_custom_type_script = "uid://bnaosc552evuy"
 
 [node name="Rodadas" type="Label" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 29
 text = "rodAtual/nRods"
 horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+script = ExtResource("7_mkfb2")
+watch_text_change = true
+metadata/_custom_type_script = "uid://d11kfgsd6jgt"
 
 [node name="Tentativas" type="Label" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 29
 text = "tentAtual/nTents"
 horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+script = ExtResource("7_mkfb2")
+watch_text_change = true
+metadata/_custom_type_script = "uid://d11kfgsd6jgt"
 
 [node name="Pontuacao" type="Label" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 29
 text = "XXXXX pts"
 horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+script = ExtResource("7_mkfb2")
+watch_text_change = true
+metadata/_custom_type_script = "uid://d11kfgsd6jgt"
 
 [node name="Menus_Container" type="Control" parent="GameplayDiv/partida_UI_Handler"]
 top_level = true
@@ -448,23 +476,23 @@ theme_override_constants/separation = 5
 
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("16_87nlb")
+data = ExtResource("18_mkfb2")
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("17_3uivl")
+data = ExtResource("19_khit1")
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("18_khit1")
+data = ExtResource("20_hvnaw")
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("18_mkfb2")
+data = ExtResource("21_y1yl5")
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("20_hvnaw")
+data = ExtResource("22_hhgcm")
 
 [node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
 layout_mode = 1
