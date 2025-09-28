@@ -6,12 +6,11 @@ extends Control
 var testbuffer 
 func _ready() -> void:
 	menu.get_child(0).switch.connect(_on_switch)
-	# testbuffer = load("res://Resources.pck")
-	# print(testbuffer)
-	# if ProjectSettings.load_resource_pack("res://Resources.pck", true):
-	# 	print("loaded decks!")
-	# else:
-	# 	print("didn't load decks!")
+	
+	var user_cookies : String = load("res://user_cookies.gd").get_global_name() if load("res://user_cookies.gd") != null else "" 
+	print(user_cookies)
+	
+	#print(user_cookies.get_as_text())
 
 # func partidaTESTE()
 	# atual.queue_free()

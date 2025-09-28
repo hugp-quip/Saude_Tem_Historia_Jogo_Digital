@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bmw6l2k81eycp" path="res://Assets/carta.png" id="1_5pqb4"]
 [ext_resource type="Script" uid="uid://tmqf5gwiooq3" path="res://Scripts/components/control_card.gd" id="2_wte5v"]
-[ext_resource type="Resource" path="res://Resources/Cartas/55.res" id="3_7g321"]
+[ext_resource type="Resource" path="res://Resources/Cartas/38.res" id="3_7g321"]
 [ext_resource type="Script" uid="uid://y00k35e20g4b" path="res://Scripts/components/carta_control_ui_handler.gd" id="4_rg6ic"]
-[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/55.res" id="5_rg6ic"]
+[ext_resource type="Texture2D" path="res://Resources/Cartas_Imagens/38.res" id="5_rg6ic"]
 [ext_resource type="Theme" uid="uid://udf724xr0hla" path="res://Assets/cardLegendatheme.tres" id="6_dna6q"]
 [ext_resource type="Script" uid="uid://d11kfgsd6jgt" path="res://ExternalAssets/addons/AutoSizeText/ui/AutoSizeLabel.gd" id="7_mloi4"]
 [ext_resource type="Texture2D" uid="uid://dc0553u7k7lhi" path="res://Assets/slot.PNG" id="7_wte5v"]
