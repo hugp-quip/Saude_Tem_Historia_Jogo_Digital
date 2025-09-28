@@ -23,7 +23,8 @@ var tentativas_usadas: int = 0 :
 
 func criar(_n_cartas: int, _baralhoRES: BarRES, _albumRES : AlbumRes ,_n_tentativas: int = 4) -> void:
 	n_tentativas = _n_tentativas
-	n_rodadas = clamp(_baralhoRES.cartas.size()/5, 1, 5)
+	
+	n_rodadas = clamp(int(_baralhoRES.cartas.size()/5.0), 1, 5)
 	n_cartas = _n_cartas
 	baralhoINFO = _baralhoRES
 	album = _albumRES

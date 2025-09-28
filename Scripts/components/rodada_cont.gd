@@ -21,9 +21,9 @@ func criar_primeira_rodada(partidaState : PartidaRES, cartas : Array)-> void:
 	partida_state = partidaState
 	rodar_inicio_animacao.call_deferred()
 
-func _criar_rodada(partida_state : PartidaRES, cartas : Array) -> void:
+func _criar_rodada(_partida_state : PartidaRES, cartas : Array) -> void:
 	rodada_state = RodadaRES.new()
-	rodada_state.n_cartas = partida_state.n_cartas
+	rodada_state.n_cartas = _partida_state.n_cartas
 	rodada_state.cards = cartas
 
 	if cartas.size() != 0:

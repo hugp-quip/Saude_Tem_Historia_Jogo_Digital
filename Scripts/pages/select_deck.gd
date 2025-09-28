@@ -17,7 +17,7 @@ func _ready() -> void:
 	else:
 		refreshDecks()
 		
-func _inspect_bar(bar : BarRES) -> void:
+func _inspect_bar(_bar : BarRES) -> void:
 	print("babaoye")
 
 func refreshDecks() -> void:

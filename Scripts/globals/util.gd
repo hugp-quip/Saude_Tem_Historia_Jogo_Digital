@@ -42,18 +42,18 @@ func get_size(node : Sprite2D) ->  Vector2:
 func get_position_from_control_to_node2D(controlP: Rect2) -> Vector2:
 	return Vector2(controlP.position.x + controlP.size.x, controlP.position.y + controlP.size.y )
 
-func printn(parent: Object, name: Variant, add_name: bool = false) -> void:
+func printn(parent: Object, _name: Variant, add_name: bool = false) -> void:
 	if parent == null:
-		push_error("parent is null on util.printn: " + name)
+		push_error("parent is null on util.printn: " + _name)
 		return
 	var parent_name : String = parent.name + "." if add_name else ""
 	# if name is String, then it's an atribute
-	if name is String:
-		print( parent_name + name + ": " + str(parent[name]))
+	if _name is String:
+		print( parent_name + _name + ": " + str(parent[_name]))
 	# if not it's a method
-	elif name is Callable:
-		var result = parent.callv(name.get_method(), name.get_bound_arguments())
-		print(parent_name + name.get_method() + "( "+ str(name.get_bound_arguments()).right(-1).left(-1) + " ): " + ("\""+str(result)+"\"") if result is String else result)
+	elif _name is Callable:
+		var result = parent.callv(_name.get_method(), _name.get_bound_arguments())
+		print(parent_name + _name.get_method() + "( "+ str(_name.get_bound_arguments()).right(-1).left(-1) + " ): " + ("\""+str(result)+"\"") if result is String else result)
 	else:
-		push_error("util.printn didn't find a valid name.")
+		push_error("util.printn didn't find a valid _name.")
 		return

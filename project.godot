@@ -22,6 +22,11 @@ G="*res://Scripts/globals/global.gd"
 Res="*res://Scripts/globals/res.gd"
 util="*res://Scripts/globals/util.gd"
 
+[debug]
+
+gdscript/warnings/unused_private_class_variable=0
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/mode=2

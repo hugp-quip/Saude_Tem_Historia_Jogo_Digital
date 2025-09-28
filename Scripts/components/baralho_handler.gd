@@ -8,7 +8,7 @@ var n_cartas_partida : int
 #@onready var random : RandomNumberGenerator = RandomNumberGenerator.new()
 var cartaRESCache : Array[CartaRES] = []
 
-func comecar(_baralhoAT: BarRES, n_rodadas: int, n_cartas: int) -> void:
+func comecar(_baralhoAT: BarRES, _n_rodadas: int, n_cartas: int) -> void:
 	#assert(_baralhoAT.cartas.size()/n_cartas >= n_rodadas, "BARALHO MUITO PEQUENO PARA O NÚMERO DE RODADAS REQUISITADO!!!")
 	n_cartas_partida = n_cartas
 	cartas = _baralhoAT.cartas.duplicate()

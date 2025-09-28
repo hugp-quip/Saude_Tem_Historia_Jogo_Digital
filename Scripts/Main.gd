@@ -7,9 +7,10 @@ var testbuffer
 func _ready() -> void:
 	menu.get_child(0).switch.connect(_on_switch)
 	
-	var user_cookies : String = load("res://user_cookies.gd").get_global_name() if load("res://user_cookies.gd") != null else "" 
-	print(user_cookies)
-	
+	if FileAccess.open("res://user_cookies.gd", FileAccess.READ):
+		var user_cookies : String = load("res://user_cookies.gd").get_global_name() if load("res://user_cookies.gd") != null else "" 
+		print(user_cookies)
+		
 	#print(user_cookies.get_as_text())
 
 # func partidaTESTE()

@@ -36,7 +36,7 @@ func iniciar_album_partida(correct_cards : Array[CartaRES], all_cards : Array[Ca
 		
 		cardContainer.get_children().map(func (c : ControlCard) : c.free() )
 
-		var n_card := 0
+		var _n_card := 0
 		var cor_card_first : ControlCard 
 		# var cards_positions : Array[int] = []
 		for card : CartaRES in all_cards:
@@ -61,7 +61,7 @@ func iniciar_album_partida(correct_cards : Array[CartaRES], all_cards : Array[Ca
 				display_card.get_node("Carta_Control_UI_Handler/Legenda").hide()	
 			display_cards.append(display_card)
 
-			n_card += 1
+			_n_card += 1
 		_add_cards_to_display(display_cards, partida_state)
 		
 		_set_selected_card(cor_card_first if cor_card_first != null else display_cards[0])
@@ -70,7 +70,7 @@ func iniciar_album_partida(correct_cards : Array[CartaRES], all_cards : Array[Ca
 func _set_selected_card(card : ControlCard) -> void:
 	cardInspector.set_selected_card(card)
 
-func _add_cards_to_display(_cards : Array[ControlCard], state : PartidaRES):
+func _add_cards_to_display(_cards : Array[ControlCard], _state : PartidaRES):
 	# if state != null:
 		
 	# 	var get_pos := func (c : ControlCard) : return state.baralhoINFO.cartas.find(c.data.id)+1

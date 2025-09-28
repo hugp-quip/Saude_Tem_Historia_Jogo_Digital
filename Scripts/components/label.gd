@@ -7,7 +7,7 @@ extends Label
 # var color_dir : float = 0.1
 # @export var curColor : Color
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	self.text = "fps = " + str(Engine.get_frames_per_second())
 
 
