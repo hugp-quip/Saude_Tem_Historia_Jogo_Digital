@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://n0wjo2ft7yn3"]
 
 [ext_resource type="Script" uid="uid://cdqlrb4ysex8r" path="res://Scripts/pages/Card_Follow.gd" id="1_76xe2"]
-[ext_resource type="PackedScene" uid="uid://dm1lndut6vb0i" path="res://Scenes/components/Control_Card.tscn" id="2_xrypv"]
-[ext_resource type="Resource" path="res://Resources/Cartas/19.res" id="3_xrypv"]
+[ext_resource type="PackedScene" uid="uid://bedjj088wyv" path="res://Scenes/components/Control_Card.tscn" id="2_xrypv"]
+[ext_resource type="Resource" uid="uid://bjsu0mps524m2" path="res://Resources/Cartas/45.res" id="3_xrypv"]
 
 [node name="Card_Follow" type="PathFollow2D"]
 progress = 15768.0

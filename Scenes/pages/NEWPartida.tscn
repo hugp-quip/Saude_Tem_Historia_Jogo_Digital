@@ -17,13 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://71g5i8adkgwk" path="res://Assets/pause.png" id="8_xm45g"]
 [ext_resource type="Texture2D" uid="uid://dhwrrynb3ho2c" path="res://Assets/navigate_minus.png" id="9_6tta7"]
 [ext_resource type="Texture2D" uid="uid://b6dt2dsdgucgb" path="res://Assets/album_button.png" id="10_b5nmm"]
-[ext_resource type="Resource" path="res://Resources/Cartas/5.res" id="18_mkfb2"]
-[ext_resource type="Resource" path="res://Resources/Cartas/4.res" id="19_khit1"]
-[ext_resource type="Resource" uid="uid://bg7ygqnwju3tc" path="res://Resources/Cartas/0.res" id="20_hvnaw"]
+[ext_resource type="Resource" path="res://Resources/Cartas/35.res" id="18_mkfb2"]
+[ext_resource type="Resource" path="res://Resources/Cartas/18.res" id="19_khit1"]
+[ext_resource type="Resource" path="res://Resources/Cartas/15.res" id="20_hvnaw"]
 [ext_resource type="Script" uid="uid://do61mk51t3633" path="res://Scenes/pages/animation_handler.gd" id="20_khit1"]
-[ext_resource type="Resource" path="res://Resources/Cartas/17.res" id="21_y1yl5"]
+[ext_resource type="Resource" path="res://Resources/Cartas/29.res" id="21_y1yl5"]
 [ext_resource type="PackedScene" uid="uid://cm86lkl8bhkn" path="res://Scenes/components/album_container.tscn" id="22_87nlb"]
-[ext_resource type="Resource" path="res://Resources/Cartas/70.res" id="22_hhgcm"]
+[ext_resource type="Resource" uid="uid://bgu8jmf445prb" path="res://Resources/Cartas/1.res" id="22_hhgcm"]
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -574,6 +574,11 @@ data = null
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(548, -223)
+enabled = false
+zoom = Vector2(0.3, 0.3)
 
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Resumir" to="." method="_on_resumir_pressed"]

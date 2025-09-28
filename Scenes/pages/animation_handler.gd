@@ -2,11 +2,12 @@ class_name RodadaAnimationHandler extends Control
 
 @onready var rodCont : RodadaCont = get_parent()
 @onready var animCards : Array = get_children()
+@onready var card_home : Vector2 = animCards[0].position
 var cardHan : ControlCardHandler
 var slotMan : ControlSlotManager
 var slot_example : ControlCard
 var cardsToMove : Array[Dictionary]
-var card_home : Vector2 = Vector2(55, -390)
+
 
 func _ready() -> void:
 	get_siblings.call_deferred()

@@ -1,4 +1,9 @@
-[gd_resource type="Theme" format=3 uid="uid://udf724xr0hla"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://udf724xr0hla"]
+
+[ext_resource type="FontFile" uid="uid://crffkkj6uxktf" path="res://Assets/Belgrano-Regular.ttf" id="1_00uas"]
+
+[sub_resource type="FontVariation" id="FontVariation_qtso4"]
+base_font = ExtResource("1_00uas")
 
 [resource]
-default_font_size = 40
+default_font = SubResource("FontVariation_qtso4")
