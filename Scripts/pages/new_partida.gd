@@ -91,8 +91,10 @@ func _on_sair_pressed() -> void:
 func _on_album_button_pressed() -> void:
 	baralhoHandler.load_all_baralho_to_cache(state)
 	var _correct_cards : Array[CartaRES] = baralhoHandler.load_cards_in_album_to_cache(state)
+	uiHandler.switch_pause_button();
 	albumCont.iniciar_album_partida(_correct_cards, baralhoHandler.cartaRESCache, state)
 	albumCont.show()
 
 func _on_album_sair_button_pressed() -> void:
 	albumCont.hide()
+	uiHandler.switch_pause_button()

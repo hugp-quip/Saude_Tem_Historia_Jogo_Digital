@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm86lkl8bhkn"]
+[gd_scene load_steps=6 format=3 uid="uid://cm86lkl8bhkn"]
 
 [ext_resource type="Script" uid="uid://ce3i2lj7p61po" path="res://Scripts/components/album_container.gd" id="1_rft18"]
 [ext_resource type="PackedScene" uid="uid://bedjj088wyv" path="res://Scenes/components/Control_Card.tscn" id="1_y582j"]
 [ext_resource type="Script" uid="uid://bicotff2noy4g" path="res://Scripts/components/card_inspector.gd" id="2_ytlgu"]
+[ext_resource type="StyleBox" uid="uid://bs4e4t3pcwhrl" path="res://Assets/generic_button_style.tres" id="4_423ys"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytlgu"]
 bg_color = Color(0.190762, 0.190762, 0.190762, 1)
@@ -88,7 +89,7 @@ alignment = 1
 script = ExtResource("2_ytlgu")
 
 [node name="Control_Card" parent="MarginContainer/Layout/MarginContainer/AlbumCont/CardInspector" instance=ExtResource("1_y582j")]
-custom_minimum_size = Vector2(100, 400)
+custom_minimum_size = Vector2(100, 300)
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Layout/MarginContainer/AlbumCont/CardInspector"]
@@ -101,7 +102,7 @@ vertical_scroll_mode = 4
 custom_minimum_size = Vector2(320, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Cólera chega ao Brasil através de um escravizado contaminado"
+text = "Na época em que foi criado, cuidava apenas de quem fosse da zona rural."
 autowrap_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/Layout"]
@@ -116,47 +117,49 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("4_423ys")
 text = "sair"
 
 [connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/Control_Card" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/Control_Card" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/Control_Card" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/Control_Card" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25438" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25438" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25438" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25438" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25439" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25439" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25439" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25439" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25440" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25440" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25440" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25440" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25441" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25441" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25441" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25441" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25442" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25442" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25442" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25442" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25443" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25443" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25443" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25443" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25444" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25444" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25444" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25444" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25445" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25445" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25445" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25445" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25446" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25446" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25446" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25446" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25447" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25447" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25447" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25447" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25448" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25448" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25448" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25448" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25449" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25449" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25449" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25449" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25450" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25450" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25450" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25450" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25451" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25451" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25451" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25451" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25452" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25452" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25452" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25452" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25453" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25453" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25453" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25453" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25454" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25454" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25454" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25454" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25455" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25455" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25455" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25455" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25456" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25456" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25456" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@25456" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72643" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72643" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72643" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72643" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72644" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72644" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72644" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72644" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72645" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72645" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72645" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72645" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72646" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72646" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72646" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72646" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72647" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72647" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72647" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72647" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72648" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72648" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72648" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72648" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72649" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72649" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72649" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72649" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72650" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72650" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72650" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72650" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72651" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72651" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72651" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72651" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72652" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72652" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72652" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72652" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72653" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72653" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72653" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72653" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72654" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72654" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72654" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72654" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72655" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72655" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72655" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72655" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72656" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72656" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72656" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72656" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72657" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72657" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72657" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72657" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72658" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72658" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72658" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72658" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72659" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72659" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72659" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72659" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72660" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72660" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72660" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72660" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72661" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72661" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72661" to="MarginContainer/Layout/MarginContainer/AlbumCont/ScrollContainer/Cards/@TextureButton@72661" method="_on_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/Layout/MarginContainer2/Buttons/sairbutton" to="." method="_on_sairbutton_pressed"]

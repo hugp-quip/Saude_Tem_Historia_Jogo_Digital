@@ -17,13 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://71g5i8adkgwk" path="res://Assets/pause.png" id="8_xm45g"]
 [ext_resource type="Texture2D" uid="uid://dhwrrynb3ho2c" path="res://Assets/navigate_minus.png" id="9_6tta7"]
 [ext_resource type="Texture2D" uid="uid://b6dt2dsdgucgb" path="res://Assets/album_button.png" id="10_b5nmm"]
-[ext_resource type="Resource" path="res://Resources/Cartas/35.res" id="18_mkfb2"]
-[ext_resource type="Resource" path="res://Resources/Cartas/18.res" id="19_khit1"]
-[ext_resource type="Resource" path="res://Resources/Cartas/15.res" id="20_hvnaw"]
+[ext_resource type="Resource" uid="uid://c17317hd3pk8r" path="res://Resources/Cartas/8.res" id="18_mkfb2"]
+[ext_resource type="Resource" path="res://Resources/Cartas/57.res" id="19_khit1"]
+[ext_resource type="Resource" uid="uid://bd2d1axe1qqfl" path="res://Resources/Cartas/7.res" id="20_hvnaw"]
 [ext_resource type="Script" uid="uid://do61mk51t3633" path="res://Scenes/pages/animation_handler.gd" id="20_khit1"]
-[ext_resource type="Resource" path="res://Resources/Cartas/29.res" id="21_y1yl5"]
+[ext_resource type="Resource" path="res://Resources/Cartas/41.res" id="21_y1yl5"]
 [ext_resource type="PackedScene" uid="uid://cm86lkl8bhkn" path="res://Scenes/components/album_container.tscn" id="22_87nlb"]
-[ext_resource type="Resource" uid="uid://bgu8jmf445prb" path="res://Resources/Cartas/1.res" id="22_hhgcm"]
+[ext_resource type="Resource" path="res://Resources/Cartas/50.res" id="22_y1yl5"]
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -91,16 +91,6 @@ texture = ExtResource("2_wvtvi")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Envio" type="Button" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 1
-text = "Enviar Rodada"
-clip_text = true
-script = ExtResource("6_3uivl")
-button_text = "Finalizar Rodada"
-metadata/_custom_type_script = "uid://bnaosc552evuy"
-
 [node name="Rodadas" type="Label" parent="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
@@ -144,7 +134,24 @@ script = ExtResource("7_mkfb2")
 watch_text_change = true
 metadata/_custom_type_script = "uid://d11kfgsd6jgt"
 
+[node name="Envio" type="Button" parent="GameplayDiv/partida_UI_Handler/Side_Panel"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+anchor_left = 0.0924092
+anchor_top = 0.774677
+anchor_right = 0.89769
+anchor_bottom = 0.914343
+offset_bottom = -3.05176e-05
+theme_override_font_sizes/font_size = 1
+text = "Enviar Rodada"
+clip_text = true
+script = ExtResource("6_3uivl")
+button_text = "Enviar Rodada"
+metadata/_custom_type_script = "uid://bnaosc552evuy"
+metadata/_edit_use_anchors_ = true
+
 [node name="Menus_Container" type="Control" parent="GameplayDiv/partida_UI_Handler"]
+visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -334,6 +341,7 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="PausaBut" type="TextureButton" parent="GameplayDiv/partida_UI_Handler"]
+unique_name_in_owner = true
 top_level = true
 z_index = 1
 layout_mode = 1
@@ -492,7 +500,7 @@ data = ExtResource("21_y1yl5")
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("22_hhgcm")
+data = ExtResource("22_y1yl5")
 
 [node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
 layout_mode = 1
@@ -580,7 +588,7 @@ position = Vector2(548, -223)
 enabled = false
 zoom = Vector2(0.3, 0.3)
 
-[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/VBoxContainer/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Resumir" to="." method="_on_resumir_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Sair" to="." method="_on_sair_pressed"]

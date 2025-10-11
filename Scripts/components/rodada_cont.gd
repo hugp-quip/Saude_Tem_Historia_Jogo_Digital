@@ -74,8 +74,8 @@ func enviar_feedback_derrota(results : Dictionary, fb : JudgeFeedBack) -> void:
 	results.incorrect_cards.map(func (card : ControlCard) : card.silence() )
 	results.relative_correct_cards.map(func (card : ControlCard) : card.silence() )
 	enviar_feedback(results.correct_cards, fb.FEEDBACK.CORRECT, color_green)
-	enviar_feedback(results.incorrect_cards, fb.FEEDBACK.INCORRECT, "#FF0000")
-	enviar_feedback(results.relative_correct_cards, fb.FEEDBACK.INCORRECT, "#cc0000ff")
+	enviar_feedback(results.incorrect_cards, -1, "#FF0000")
+	enviar_feedback(results.relative_correct_cards, -1, "#cc0000ff")
 
 
 func enviar_feedback_padrao(results : Dictionary, fb : JudgeFeedBack) -> void:
@@ -91,7 +91,7 @@ func enviar_feedback( cards: Array, feedback_type: int ,ano_color: String ):
 		var fb : JudgeFeedBack = Res.feedback.instantiate()
 		
 		lab.visible = true
-		if feedback_type == fb.FEEDBACK.CORRECT: 
+		if feedback_type == fb.FEEDBACK.CORRECT or feedback_type == -1: 
 			lab.text = card.data.ano
 		else:
 			lab.text = "XXXX"
