@@ -13,12 +13,13 @@ func inserir_e_criar_cartas(_cartas : Array):
 	var cartas_size : int = _cartas.size()
 	
 	if cartas_size == 0 or _cartas == null: push_error("Tentou criar mesa sem _cartas!!!!")
-
+	print(cartas_size)
 	#print("Criando mesa com "+ str(cartas_size) + " cartas.")
 	if cartas_size > 5:
+		var controlCardDisplay = load("res://Scenes/components/Control_Card.tscn")
 		for i in cartas_size - 5:
-			table.add_child(Res.controlCardDisplay.instantiate())
-			hand.add_child(Res.controlCardDisplay.instantiate())
+			table.add_child(controlCardDisplay.instantiate())
+			hand.add_child(controlCardDisplay.instantiate())
 
 	hand_slots = hand.get_children()
 	table_slots = table.get_children() 
