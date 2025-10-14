@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbi7jiche7t5l"]
 
-[ext_resource type="Script" uid="uid://bcnnyihcec1gv" path="res://ExternalAssets/addons/AutoSizeText/ui/AutoSizeTextEdit.gd" id="1_43qmb"]
+[ext_resource type="Script" uid="uid://bcnnyihcec1gv" path="res://addons/AutoSizeText/ui/AutoSizeTextEdit.gd" id="1_43qmb"]
 
 [node name="AutoSizeSampleTextEdit" type="Control"]
 layout_mode = 3
