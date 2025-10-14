@@ -26,12 +26,12 @@ func get_ano() -> String:
 func load_fake_card(id : int = -1) -> void:
 		var rand = RandomNumberGenerator.new()
 		rand.randomize()
-		var r : int
+		var r 
 		if id != -1:
-			r = id
+			r = load("res://Resources/Cartas/"+str(id)+".res")
 		else:
-			r = rand.randi_range(0, 71) # card id
-		var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
+			r = util.random_card_res() # card id
+		var res : CartaRES = r #load("res://Resources/Cartas/"+str(r)+".res")
 		data = res
 		criar_carta_display(res)
 

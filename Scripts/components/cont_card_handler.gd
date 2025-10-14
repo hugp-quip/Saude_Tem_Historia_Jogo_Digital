@@ -16,7 +16,7 @@ var cards_data : Array
 
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint(): # and false:
 		cards_data = _make_fake_card_res_list(5) 
 		slotMan.inserir_e_criar_cartas(cards_data)
 
@@ -94,10 +94,10 @@ func _hide_cursor() -> void:
 	
 func _make_fake_card_res_list(n_cartas : int) -> Array:
 	var ret := []
-	var rand = RandomNumberGenerator.new()
-	rand.randomize()
+	# var rand = RandomNumberGenerator.new()
+	# rand.randomize()
 	for card in n_cartas:
-		var r : int = rand.randi_range(0, 71) # card id
-		var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
-		ret.append(res)
+		# var r : int = rand.randi_range(0, 71) # card id
+		# var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
+		ret.append(util.random_card_res()) #res)
 	return ret

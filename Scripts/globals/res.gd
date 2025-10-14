@@ -14,3 +14,4 @@ extends Node
 @onready var pause_texture := load("res://Assets/pause.png")
 @onready var resume_texture := load("res://Assets/resume.png")
 var pathCartas := "res://Resources/Cartas"
+var n_cards = 64
