@@ -13,7 +13,7 @@ func is_slot() -> bool:
 	return data == null
 
 func _ready() -> void:
-	if Engine.is_editor_hint() and get_parent() is SubViewport:
+	if Engine.is_editor_hint() and get_parent() is SubViewport and false:
 		("a")
 		_load_fake_data()
 
@@ -52,8 +52,8 @@ func updateUI(_data: CartaRES) -> void:
 func _load_fake_data():
 	var rand = RandomNumberGenerator.new()
 	rand.randomize()
-	var r : int = rand.randi_range(0, 71) # card id
-	var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
+	#var r : int = rand.randi_range(0, 71) # card id
+	var res : CartaRES = util.random_card_res()#load("res://Resources/Cartas/"+str(r)+".res")
 	data = res
 	criar_carta_display(res)
 

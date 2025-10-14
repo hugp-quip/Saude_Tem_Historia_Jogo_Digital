@@ -23,6 +23,8 @@ func _ready() -> void:
 		_add_cards_to_display(display_cards, null)
 		_set_selected_card(display_cards[0])
 
+	_set_selected_card()
+
 func iniciar_album_partida(correct_cards : Array[CartaRES], all_cards : Array[CartaRES], partida_state : PartidaRES) -> void:
 		
 		var get_pos := func (c : CartaRES) : return partida_state.baralhoINFO.cartas.find(c.id) + 1
@@ -64,11 +66,13 @@ func iniciar_album_partida(correct_cards : Array[CartaRES], all_cards : Array[Ca
 			_n_card += 1
 		_add_cards_to_display(display_cards, partida_state)
 		
-		_set_selected_card(cor_card_first if cor_card_first != null else display_cards[0])
+		#_set_selected_card(cor_card_first if cor_card_first != null else display_cards[0])
 		
 
-func _set_selected_card(card : ControlCard) -> void:
+func _set_selected_card(card : ControlCard = null) -> void:
 	cardInspector.set_selected_card(card)
+	
+
 
 func _add_cards_to_display(_cards : Array[ControlCard], _state : PartidaRES):
 	# if state != null:
