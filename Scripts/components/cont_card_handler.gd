@@ -96,7 +96,12 @@ func _make_fake_card_res_list(n_cartas : int) -> Array:
 	var ret := []
 	# var rand = RandomNumberGenerator.new()
 	# rand.randomize()
+	# var rand = RandomNumberGenerator.new()
+	# rand.randomize()
 	for card in n_cartas:
+		# var r : int = rand.randi_range(0, 71) # card id
+		# var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
+		ret.append(util.random_card_res()) #res)
 		# var r : int = rand.randi_range(0, 71) # card id
 		# var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
 		ret.append(util.random_card_res()) #res)
