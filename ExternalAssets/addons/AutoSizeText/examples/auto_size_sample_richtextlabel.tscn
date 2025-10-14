@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnivd2dkn4wb"]
 
-[ext_resource type="Script" uid="uid://leehmvr1x5lu" path="res://addons/AutoSizeText/ui/AutoSizeRichTextLabel.gd" id="1_fkxwj"]
+[ext_resource type="Script" uid="uid://leehmvr1x5lu" path="res://ExternalAssets/addons/AutoSizeText/ui/AutoSizeRichTextLabel.gd" id="1_fkxwj"]
 
 [node name="AutoSizeSample" type="Node2D"]
 

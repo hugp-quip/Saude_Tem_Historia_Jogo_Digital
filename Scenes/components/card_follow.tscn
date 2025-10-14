@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdqlrb4ysex8r" path="res://Scripts/pages/Card_Follow.gd" id="1_76xe2"]
 [ext_resource type="PackedScene" uid="uid://bedjj088wyv" path="res://Scenes/components/Control_Card.tscn" id="2_xrypv"]
-[ext_resource type="Resource" uid="uid://bjsu0mps524m2" path="res://Resources/Cartas/45.res" id="3_xrypv"]
+[ext_resource type="Resource" uid="uid://cjl0vil7yfo37" path="res://Resources/Cartas/45.res" id="3_xrypv"]
 
 [node name="Card_Follow" type="PathFollow2D"]
 progress = 15768.0

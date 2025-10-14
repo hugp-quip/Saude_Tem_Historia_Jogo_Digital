@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ngdje2iducq6"]
 
-[ext_resource type="Script" uid="uid://leehmvr1x5lu" path="res://addons/AutoSizeText/ui/AutoSizeRichTextLabel.gd" id="1_6bwgp"]
-[ext_resource type="Script" uid="uid://ciwm3vayyu5ft" path="res://addons/AutoSizeText/ui/AutoSizeCheckButton.gd" id="2_t5j1q"]
-[ext_resource type="Script" uid="uid://bnsokjy5urgks" path="res://addons/AutoSizeText/ui/AutoSizeCheckBox.gd" id="3_t5j1q"]
+[ext_resource type="Script" uid="uid://leehmvr1x5lu" path="res://ExternalAssets/addons/AutoSizeText/ui/AutoSizeRichTextLabel.gd" id="1_6bwgp"]
+[ext_resource type="Script" uid="uid://ciwm3vayyu5ft" path="res://ExternalAssets/addons/AutoSizeText/ui/AutoSizeCheckButton.gd" id="2_t5j1q"]
+[ext_resource type="Script" uid="uid://bnsokjy5urgks" path="res://ExternalAssets/addons/AutoSizeText/ui/AutoSizeCheckBox.gd" id="3_t5j1q"]
 
 [node name="AutoSizeSampleCheck" type="Control"]
 layout_mode = 3
