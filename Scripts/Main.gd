@@ -42,49 +42,41 @@ func corrigirCartas():
 
 func adicionar_novas_cartas():
 	#Nome, Ano, Dica, Img
-	var main_path = "res://EXPOTEC 2025/Imagens Cartas Saude tem Historia"
+	var main_path = "res://CSV_IMPORT/Imagens Cartas Saude tem Historia"
 	var aids_path = "AIDS.csv"
 	var saude_path = "Saúde Pública e Mundial.csv"
 	var img_aids_path = "Imagens_AIDS_quad"
 	var img_saude_path = "Imagens Saúde Pública e Mundial quad"	
 
-	var aids_csv = FileAccess.open(main_path.path_join(saude_path), FileAccess.READ)
+	var aids_csv = FileAccess.open(main_path.path_join(aids_path), FileAccess.READ)
 
 	print(aids_csv.get_as_text())
 
 	aids_csv.get_csv_line() #remover primeira linha
-	var i = 30
+	var i = 0
 	var allCards = []
 
 	var current_csv = aids_csv
+	var img_path = img_aids_path
 	while true:
 		var linha : PackedStringArray = current_csv.get_csv_line()
-		if current_csv.eof_reached():
-			# if current_csv == aids_csv:
-
-				
-			# 	current_csv = FileAccess.open(main_path.path_join(saude_path), FileAccess.READ)
-			# else:
+		if current_csv.eof_reached():	
+			if current_csv.get_path() == aids_csv.get_path():
+				current_csv = FileAccess.open(main_path.path_join(saude_path), FileAccess.READ)
+				img_path = img_saude_path
+				current_csv.get_csv_line()
+				linha = current_csv.get_csv_line()
+			else:
 				break
-		#print(linha)
-		#if i == 0: continue
-		# var test : CompressedTexture2D = load(main_path.path_join(img_aids_path.path_join(linha[3].split(".")[0]+".png")))
-		# var test2 = test.get_image()
-		# print(test.get_image())
-		# var test3 = ImageTexture.create_from_image(test.get_image())
-		# testImage = test3
-		# ResourceSaver.save(testImage, "res://testImage.res")
-		# assert(false)
-		#G.makeResourceFromImage(main_path.path_join(img_aids_path.path_join(linha[3])))
 		
 		var carta : CartaRES = CartaRES.new()
-		print(linha[0] + "image name: " + linha[3] )
-		var img : ImageTexture = ImageTexture.create_from_image(load(main_path.path_join(img_saude_path.path_join(linha[3].split(".")[0]+".png"))).get_image())
+		print(linha[0] + " image name: " + linha[3] )
+		var img : ImageTexture = ImageTexture.create_from_image(load(main_path.path_join(img_path.path_join(linha[3].split(".")[0]+".png"))).get_image())
 		print(error_string(ResourceSaver.save(img, "res://Resources/Cartas_Imagens/"+str(i)+".res")))
 		
 		#var img2 : ImageTexture = load("res://Resources/Cartas_Imagens/"+str(i)+".res")
 		
-		carta.criar_cartaRES( i,  linha[0], linha[2], linha[1], img)
+		carta.criar_cartaRES( i,  linha[0], linha[6], linha[1], img, linha[2])
 		
 		print(error_string(ResourceSaver.save(carta, "res://Resources/Cartas/"+str(i)+".res")))
 

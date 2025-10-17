@@ -10,11 +10,12 @@ class_name  CartaRES
 @export var imagem := ImageTexture.new() #Res.cardBackground
 
 #adicionar a dica depois
-func criar_cartaRES( _id: int, _legenda : String, _descricao: String, _ano: String, _imagem : ImageTexture) -> void:
+func criar_cartaRES( _id: int, _legenda : String, _descricao: String, _ano: String, _imagem : ImageTexture, _dica : String) -> void:
 	id = _id
 	legenda = _legenda
 	ano = _ano
 	descricao = _descricao
+	dica = _dica
 	#print(_imagem)
 	imagem = _imagem
 
