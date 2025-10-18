@@ -15,14 +15,14 @@ func update(_partida: PartidaRES) -> void:
 	%Pontuacao.text = str(_partida.points) +" pts"
 
 func enviar_rodada_to_proxima_rodada(partida_state : PartidaRES, new_rodada : Callable):	
-	envio_but.text = "Próxima Rodada"
+	envio_but.button_text = "Próxima Rodada"
 	if envio_but.pressed.get_connections().filter(func (d : Dictionary) : return d.callable.get_method() == new_rodada.get_method()).size() > 0:
 		envio_but.pressed.disconnect(new_rodada)
 	envio_but.pressed.disconnect(_on_envio_pressed)
 	envio_but.pressed.connect(new_rodada.bind(partida_state, reverter_estado_do_envio))
 
 func reverter_estado_do_envio(new_rodada : Callable):
-	envio_but.text = "Enviar Rodada"
+	envio_but.button_text = "Enviar Rodada"
 	envio_but.pressed.disconnect(new_rodada)
 	envio_but.pressed.connect(_on_envio_pressed)
 
