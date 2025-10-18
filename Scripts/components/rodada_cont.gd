@@ -34,10 +34,16 @@ func rodar_inicio_animacao() -> void:
 	animHan.run_start_animation()
 
 func _on_envio_pressed() -> void:
+	print("envio pressed")
+	print("cards in table" + str(slotMan.get_cards_in_table().size()))
+	if slotMan.get_cards_in_table().size() != 5:
+		%partida_UI_Handler.push_info_timer("Coloque todas as cartas na linha do tempo!")
+		return 
+
+
+
 	var results
 	results = judge.get_rodada_results(rodada_state.correct_cards)
-	
-	
 	
 	if not (results.has_result): return
 	

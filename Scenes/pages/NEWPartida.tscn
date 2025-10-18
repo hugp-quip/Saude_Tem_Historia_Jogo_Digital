@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ceoel78p5ce80"]
+[gd_scene load_steps=28 format=3 uid="uid://ceoel78p5ce80"]
 
 [ext_resource type="Script" uid="uid://b2u7htb7hh40p" path="res://Scripts/pages/new_partida.gd" id="1_ul87i"]
 [ext_resource type="Script" uid="uid://bslvwt8o7qgwp" path="res://Scripts/components/partida_ui_handler.gd" id="2_cynnd"]
@@ -14,16 +14,22 @@
 [ext_resource type="PackedScene" uid="uid://bedjj088wyv" path="res://Scenes/components/Control_Card.tscn" id="7_npai1"]
 [ext_resource type="Texture2D" uid="uid://dc0553u7k7lhi" path="res://Assets/slot.PNG" id="7_ulsrg"]
 [ext_resource type="Script" uid="uid://dm505umj6ohxy" path="res://Scripts/components/cont_slot_manager.gd" id="7_wimq8"]
+[ext_resource type="Texture2D" uid="uid://djy6di58rugpi" path="res://Assets/lupa.png" id="8_hvnaw"]
 [ext_resource type="Texture2D" uid="uid://71g5i8adkgwk" path="res://Assets/pause.png" id="8_xm45g"]
 [ext_resource type="Texture2D" uid="uid://dhwrrynb3ho2c" path="res://Assets/navigate_minus.png" id="9_6tta7"]
+[ext_resource type="Texture2D" uid="uid://cxo0cisdbqwwr" path="res://Assets/illustration-of-book-vector.png" id="9_y1yl5"]
 [ext_resource type="Texture2D" uid="uid://b6dt2dsdgucgb" path="res://Assets/album_button.png" id="10_b5nmm"]
-[ext_resource type="Resource" uid="uid://b5nywbg0vrf3p" path="res://Resources/Cartas/62.res" id="19_mkfb2"]
-[ext_resource type="Resource" uid="uid://dxqxs0kajymlo" path="res://Resources/Cartas/19.res" id="20_hvnaw"]
+[ext_resource type="Resource" uid="uid://cdaoeveocbxow" path="res://Resources/Cartas/11.res" id="20_hvnaw"]
 [ext_resource type="Script" uid="uid://do61mk51t3633" path="res://Scenes/pages/animation_handler.gd" id="20_khit1"]
-[ext_resource type="Resource" uid="uid://bc3fj3ngn8xik" path="res://Resources/Cartas/24.res" id="20_y1yl5"]
-[ext_resource type="Resource" uid="uid://cqp5gpek3kpop" path="res://Resources/Cartas/59.res" id="21_hhgcm"]
+[ext_resource type="Resource" uid="uid://c2v5cys1u2c3b" path="res://Resources/Cartas/12.res" id="20_y1yl5"]
+[ext_resource type="Resource" uid="uid://d22pu3r5xkvx8" path="res://Resources/Cartas/28.res" id="21_y1yl5"]
 [ext_resource type="PackedScene" uid="uid://cm86lkl8bhkn" path="res://Scenes/components/album_container.tscn" id="22_87nlb"]
-[ext_resource type="Resource" uid="uid://wdt7hw442el8" path="res://Resources/Cartas/15.res" id="22_p1qcc"]
+[ext_resource type="Resource" uid="uid://y04cnl6bv3cw" path="res://Resources/Cartas/53.res" id="22_hhgcm"]
+[ext_resource type="Resource" uid="uid://r7875qenmbl4" path="res://Resources/Cartas/51.res" id="24_p1qcc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvnaw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -49,6 +55,7 @@ offset_bottom = 6.10352e-05
 metadata/_edit_use_anchors_ = true
 
 [node name="partida_UI_Handler" type="Control" parent="GameplayDiv"]
+unique_name_in_owner = true
 layout_mode = 1
 anchor_top = -0.205176
 anchor_right = 1.0
@@ -75,10 +82,10 @@ metadata/_edit_use_anchors_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="GameplayDiv/partida_UI_Handler/Side_Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0693069
+anchor_left = 0.049505
 anchor_top = 0.018622
-anchor_right = 0.930693
-anchor_bottom = 0.644323
+anchor_right = 0.957096
+anchor_bottom = 0.525142
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -95,7 +102,7 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 29
 text = "rodAtual/nRods"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -109,7 +116,7 @@ metadata/_custom_type_script = "uid://d11kfgsd6jgt"
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 29
 text = "tentAtual/nTents"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -124,7 +131,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 29
 text = "XXXXX pts"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -143,14 +150,56 @@ anchor_right = 0.89769
 anchor_bottom = 0.914343
 offset_bottom = -3.05176e-05
 theme_override_font_sizes/font_size = 1
-text = "Enviar Rodada"
 clip_text = true
 script = ExtResource("6_3uivl")
 button_text = "Enviar Rodada"
 metadata/_custom_type_script = "uid://bnaosc552evuy"
 metadata/_edit_use_anchors_ = true
 
+[node name="DicaButtons" type="HBoxContainer" parent="GameplayDiv/partida_UI_Handler/Side_Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0825083
+anchor_top = 0.627563
+anchor_right = 0.924092
+anchor_bottom = 0.769091
+metadata/_edit_use_anchors_ = true
+
+[node name="DicaBut" type="TextureButton" parent="GameplayDiv/partida_UI_Handler/Side_Panel/DicaButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("8_hvnaw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="DescricaoBut" type="TextureButton" parent="GameplayDiv/partida_UI_Handler/Side_Panel/DicaButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("9_y1yl5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="DicasText" type="Label" parent="GameplayDiv/partida_UI_Handler/Side_Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0759076
+anchor_top = 0.553075
+anchor_right = 0.933993
+anchor_bottom = 0.629425
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 29
+text = "Dicas: <x/y>"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+script = ExtResource("7_mkfb2")
+watch_text_change = true
+metadata/_custom_type_script = "uid://d11kfgsd6jgt"
+metadata/_edit_use_anchors_ = true
+
 [node name="Menus_Container" type="Control" parent="GameplayDiv/partida_UI_Handler"]
+unique_name_in_owner = true
 visible = false
 top_level = true
 layout_mode = 1
@@ -164,7 +213,6 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="pause_overlay" type="Panel" parent="GameplayDiv/partida_UI_Handler/Menus_Container"]
-visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -172,6 +220,84 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Menu_Dica" type="TextureRect" parent="GameplayDiv/partida_UI_Handler/Menus_Container"]
+unique_name_in_owner = true
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.278646
+anchor_top = 0.243827
+anchor_right = 0.744614
+anchor_bottom = 0.745765
+offset_right = 8.20422
+offset_bottom = 139.744
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.984946, 0.699475)
+texture = ExtResource("7_ulsrg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sair" type="Button" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Dica"]
+custom_minimum_size = Vector2(40, 60)
+layout_mode = 2
+anchor_left = 0.137615
+anchor_top = 0.780645
+anchor_right = 0.827523
+anchor_bottom = 0.952688
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Sair
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Dica"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0348624
+anchor_top = 0.262366
+anchor_right = 0.968807
+anchor_bottom = 0.765591
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Dica/ScrollContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.112662, 0.349462, 1, 1)
+theme_override_font_sizes/font_size = 38
+text = "Eu não sei como é possível n ter uma dica aqui, parabéns nmrl"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 3
+script = ExtResource("7_mkfb2")
+watch_text_change = true
+metadata/_custom_type_script = "uid://d11kfgsd6jgt"
+metadata/_edit_use_anchors_ = true
+
+[node name="AutoSizeLabel" type="Label" parent="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Dica"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0513761
+anchor_top = 0.0774194
+anchor_right = 0.966972
+anchor_bottom = 0.298925
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 38
+text = "<nome da carta>"
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 3
+script = ExtResource("7_mkfb2")
+watch_text_change = true
+metadata/_custom_type_script = "uid://d11kfgsd6jgt"
+metadata/_edit_use_anchors_ = true
 
 [node name="Menu_Pausa" type="TextureRect" parent="GameplayDiv/partida_UI_Handler/Menus_Container"]
 visible = false
@@ -400,6 +526,39 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="InfoText" type="Label" parent="GameplayDiv/partida_UI_Handler"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.276132
+anchor_top = 0.0521474
+anchor_right = 0.925087
+anchor_bottom = 0.148774
+theme_override_font_sizes/font_size = 38
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 3
+script = ExtResource("7_mkfb2")
+watch_text_change = true
+metadata/_custom_type_script = "uid://d11kfgsd6jgt"
+metadata/_edit_use_anchors_ = true
+
+[node name="InfoTimer" type="Timer" parent="GameplayDiv/partida_UI_Handler"]
+unique_name_in_owner = true
+
+[node name="block_side_panel" type="Panel" parent="GameplayDiv/partida_UI_Handler"]
+unique_name_in_owner = true
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -840.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hvnaw")
+
 [node name="RodadaCont" type="Control" parent="GameplayDiv"]
 custom_minimum_size = Vector2(810, 0)
 layout_mode = 1
@@ -484,23 +643,23 @@ theme_override_constants/separation = 5
 
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("20_hvnaw")
+data = ExtResource("20_y1yl5")
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("19_mkfb2")
+data = ExtResource("21_y1yl5")
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("20_y1yl5")
+data = ExtResource("22_hhgcm")
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("21_hhgcm")
+data = ExtResource("20_hvnaw")
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("22_p1qcc")
+data = ExtResource("24_p1qcc")
 
 [node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
 layout_mode = 1
@@ -588,7 +747,11 @@ position = Vector2(548, -223)
 enabled = false
 zoom = Vector2(0.3, 0.3)
 
+[connection signal="wants_to_select_dica" from="GameplayDiv/partida_UI_Handler" to="GameplayDiv/RodadaCont/CardHandler" method="_on_partida_ui_handler_wants_to_select_dica"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/Envio" to="GameplayDiv/partida_UI_Handler" method="_on_envio_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/DicaButtons/DicaBut" to="." method="_on_dica_but_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Side_Panel/DicaButtons/DescricaoBut" to="." method="_on_descricao_but_pressed"]
+[connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Dica/Sair" to="GameplayDiv/partida_UI_Handler" method="_on_sair_dica_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Resumir" to="." method="_on_resumir_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Pausa/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
@@ -597,3 +760,5 @@ zoom = Vector2(0.3, 0.3)
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/Menus_Container/Menu_Final/Minimizar" to="GameplayDiv/partida_UI_Handler" method="_on_minimizar_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/PausaBut" to="." method="_on_pausa_but_pressed"]
 [connection signal="pressed" from="GameplayDiv/partida_UI_Handler/AlbumButton" to="." method="_on_album_button_pressed"]
+[connection signal="timeout" from="GameplayDiv/partida_UI_Handler/InfoTimer" to="GameplayDiv/partida_UI_Handler" method="push_info"]
+[connection signal="dica_card_selected" from="GameplayDiv/RodadaCont/CardHandler" to="GameplayDiv/partida_UI_Handler" method="_on_card_handler_dica_card_selected"]

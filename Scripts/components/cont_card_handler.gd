@@ -8,7 +8,7 @@ class_name ControlCardHandler extends Control
 var cursor_cards_original_slot : ControlCard
 var is_dragging_card : = false
 @export var slot_with_mouse : ControlCard 
-
+@onready var uiHandler : PartidaUIHandler = %partida_UI_Handler
 #var card_with_mouse : ControlCard 
 var mouse_cardOffset : Vector2 
 
@@ -45,8 +45,20 @@ func _update_has_mouse(slot : ControlCard):
 	else:
 		slot_with_mouse = null
 
+var awaiting_dica_input := false
+signal dica_card_selected(card : ControlCard)
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
+		if awaiting_dica_input:
+			if !slot_with_mouse or slot_with_mouse.is_slot():  
+				uiHandler.push_info("Clique em uma carta para selecionar sua dica!") 
+				return
+			if slot_with_mouse.data == null: 
+				push_error("De alguma forma tentou mover carta sem dados???")
+				return
+			awaiting_dica_input = false
+			dica_card_selected.emit(slot_with_mouse)
+			return
 		if event.pressed:
 			("pressed")
 			if !slot_with_mouse: return
@@ -106,3 +118,7 @@ func _make_fake_card_res_list(n_cartas : int) -> Array:
 		# var res : CartaRES = load("res://Resources/Cartas/"+str(r)+".res")
 		ret.append(util.random_card_res()) #res)
 	return ret
+
+
+func _on_partida_ui_handler_wants_to_select_dica() -> void:
+	awaiting_dica_input = true

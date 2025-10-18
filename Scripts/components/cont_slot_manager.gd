@@ -29,6 +29,8 @@ func inserir_e_criar_cartas(_cartas : Array):
 	for i in cartas_size:
 		hand_slots[i].make_card(_cartas[i])
 
+func get_cards_in_table() -> Array:
+	return table.get_children().filter(func (slot: ControlCard) : if !slot.is_slot(): return slot) 
 
 func inserir_cartas(_cartas : Array):
 		cartas = _cartas

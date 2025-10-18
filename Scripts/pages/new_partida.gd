@@ -98,3 +98,27 @@ func _on_album_button_pressed() -> void:
 func _on_album_sair_button_pressed() -> void:
 	albumCont.hide()
 	uiHandler.switch_pause_button()
+
+
+func _dica_usada() -> void:
+	state.dicas_usadas += 1
+	uiHandler.update(state)
+
+func can_dica() -> bool:
+	return state.dicas_usadas < state.n_dicas
+
+func _on_descricao_but_pressed() -> void:
+	if !can_dica(): 
+		uiHandler.push_info_timer("Você não tem mais dicas!")
+		return
+	
+	_dica_usada()
+	uiHandler._on_descricao_but_pressed()
+
+func _on_dica_but_pressed() -> void:
+	if !can_dica(): 
+		uiHandler.push_info_timer("Você não tem mais dicas!")
+		return
+	
+	_dica_usada()
+	uiHandler._on_dica_but_pressed()
