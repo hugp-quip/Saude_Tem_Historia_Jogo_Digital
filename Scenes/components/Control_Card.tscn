@@ -24,6 +24,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_wte5v")
 data = ExtResource("3_7g321")
+exit_tween_duration = null
 metadata/_edit_use_anchors_ = true
 
 [node name="Carta_Control_UI_Handler" type="Control" parent="."]

@@ -35,8 +35,14 @@ func reiniciar(_cards_data : Array) -> void:
 	all_slots.map(func (slot : ControlCard) : slot.make_slot())
 	slotMan.inserir_cartas(_cards_data)
 
+var cont := 0
 func _physics_process(_delta: float) -> void:
 	if is_dragging_card:
+		cont+=1
+		if cont == 30:
+			#print("dssda")
+			
+			cont = 0
 		cursor_card.position = get_local_mouse_position() - position - mouse_cardOffset
 
 func _update_has_mouse(slot : ControlCard):
@@ -90,7 +96,9 @@ func _input(event: InputEvent) -> void:
 			
 	
 func _show_cursor(card: ControlCard) -> void:
+	print("a")
 	is_dragging_card = true
+	
 	mouse_cardOffset = get_global_mouse_position() - card.global_position
 	#print("Card clicked!!!! " + ("um slot!" if card.is_slot() else "uma carta!"))
 	var lab : Label = card.get_node("Carta_Control_UI_Handler").get_node("ano")
@@ -98,10 +106,14 @@ func _show_cursor(card: ControlCard) -> void:
 	cursor_card.get_node("Carta_Control_UI_Handler").get_node("ano").text = lab.text 
 	cursor_card.size = card.size
 	cursor_card.make_card(card.data)
+	cursor_card.initial_position_of_drag = cursor_card.position
 	cursor_card.show()
+	cursor_card.is_dragging = true
+	
 
 func _hide_cursor() -> void:
 	is_dragging_card = false
+	cursor_card.is_dragging = true
 	cursor_card.hide()
 	
 func _make_fake_card_res_list(n_cartas : int) -> Array:

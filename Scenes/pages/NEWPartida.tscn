@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ceoel78p5ce80"]
+[gd_scene load_steps=30 format=3 uid="uid://ceoel78p5ce80"]
 
 [ext_resource type="Script" uid="uid://b2u7htb7hh40p" path="res://Scripts/pages/new_partida.gd" id="1_ul87i"]
 [ext_resource type="Script" uid="uid://bslvwt8o7qgwp" path="res://Scripts/components/partida_ui_handler.gd" id="2_cynnd"]
@@ -19,17 +19,37 @@
 [ext_resource type="Texture2D" uid="uid://dhwrrynb3ho2c" path="res://Assets/navigate_minus.png" id="9_6tta7"]
 [ext_resource type="Texture2D" uid="uid://cxo0cisdbqwwr" path="res://Assets/illustration-of-book-vector.png" id="9_y1yl5"]
 [ext_resource type="Texture2D" uid="uid://b6dt2dsdgucgb" path="res://Assets/album_button.png" id="10_b5nmm"]
-[ext_resource type="Resource" uid="uid://cdaoeveocbxow" path="res://Resources/Cartas/11.res" id="20_hvnaw"]
 [ext_resource type="Script" uid="uid://do61mk51t3633" path="res://Scenes/pages/animation_handler.gd" id="20_khit1"]
-[ext_resource type="Resource" uid="uid://c2v5cys1u2c3b" path="res://Resources/Cartas/12.res" id="20_y1yl5"]
-[ext_resource type="Resource" uid="uid://d22pu3r5xkvx8" path="res://Resources/Cartas/28.res" id="21_y1yl5"]
+[ext_resource type="Shader" uid="uid://dvmd3uvr3kqo6" path="res://Scripts/Control_Card.gdshader" id="20_y1yl5"]
+[ext_resource type="Resource" uid="uid://fho4v6yux58b" path="res://Resources/Cartas/4.res" id="21_y1yl5"]
 [ext_resource type="PackedScene" uid="uid://cm86lkl8bhkn" path="res://Scenes/components/album_container.tscn" id="22_87nlb"]
-[ext_resource type="Resource" uid="uid://y04cnl6bv3cw" path="res://Resources/Cartas/53.res" id="22_hhgcm"]
-[ext_resource type="Resource" uid="uid://r7875qenmbl4" path="res://Resources/Cartas/51.res" id="24_p1qcc"]
+[ext_resource type="Resource" uid="uid://bb2x2ipaw2re3" path="res://Resources/Cartas/42.res" id="22_hhgcm"]
+[ext_resource type="Resource" uid="uid://duupy5y4qoc1" path="res://Resources/Cartas/60.res" id="23_p1qcc"]
+[ext_resource type="Resource" uid="uid://ts6xada4t0gk" path="res://Resources/Cartas/57.res" id="24_8n1k6"]
+[ext_resource type="Resource" uid="uid://bc3fj3ngn8xik" path="res://Resources/Cartas/24.res" id="25_k252d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvnaw"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k252d"]
+shader = ExtResource("20_y1yl5")
+shader_parameter/_tilt_Scale = 0.9
+shader_parameter/_mainTint = Color(1, 1, 1, 1)
+shader_parameter/_texPos = Vector4(0, 0, 1, 1)
+shader_parameter/_zDist = 0.0
+shader_parameter/_isSecondTex = false
+shader_parameter/_secondTint = Color(1, 1, 1, 1)
+shader_parameter/_texPos2 = Vector4(0, 0, 1, 1)
+shader_parameter/_zDist2 = 0.0
+shader_parameter/_isShadows = true
+shader_parameter/_shadowOffset = Vector2(0, 0)
+shader_parameter/_shadowOffset2 = Vector2(0, 0)
+shader_parameter/_shadowCol = Color(0, 0, 0, 0.5)
+shader_parameter/_isSpecularLight = false
+shader_parameter/_speularLightIntensity = 0.3
+shader_parameter/_speularLightPower = 3.0
+shader_parameter/_mousePos = Vector2(0, 0)
 
 [node name="PartidaContainer" type="Control"]
 layout_mode = 3
@@ -268,7 +288,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.112662, 0.349462, 1, 1)
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 9
 text = "Eu não sei como é possível n ter uma dica aqui, parabéns nmrl"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -586,6 +606,7 @@ script = ExtResource("7_fuh8x")
 
 [node name="DraggingCard" parent="GameplayDiv/RodadaCont/CardHandler" instance=ExtResource("7_npai1")]
 z_index = 1
+material = SubResource("ShaderMaterial_k252d")
 layout_mode = 1
 anchor_left = 0.964197
 anchor_top = -0.716667
@@ -595,9 +616,11 @@ offset_left = -4.99976
 offset_top = -682.0
 offset_right = 137.031
 offset_bottom = -443.667
+scale = Vector2(1, 1.04807)
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 data = null
+exit_tween_duration = 0.3
 
 [node name="SlotManager" type="VBoxContainer" parent="GameplayDiv/RodadaCont/CardHandler"]
 layout_mode = 1
@@ -619,22 +642,27 @@ theme_override_constants/separation = 5
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
 layout_mode = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
 layout_mode = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
 layout_mode = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
 layout_mode = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Table" instance=ExtResource("7_npai1")]
 layout_mode = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Hand" type="HBoxContainer" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager"]
 layout_mode = 2
@@ -643,23 +671,28 @@ theme_override_constants/separation = 5
 
 [node name="Control_Card" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("20_y1yl5")
+data = ExtResource("21_y1yl5")
+exit_tween_duration = 0.3
 
 [node name="Control_Card2" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("21_y1yl5")
+data = ExtResource("22_hhgcm")
+exit_tween_duration = 0.3
 
 [node name="Control_Card3" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("22_hhgcm")
+data = ExtResource("23_p1qcc")
+exit_tween_duration = 0.3
 
 [node name="Control_Card4" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("20_hvnaw")
+data = ExtResource("24_8n1k6")
+exit_tween_duration = 0.3
 
 [node name="Control_Card5" parent="GameplayDiv/RodadaCont/CardHandler/SlotManager/Hand" instance=ExtResource("7_npai1")]
 layout_mode = 2
-data = ExtResource("24_p1qcc")
+data = ExtResource("25_k252d")
+exit_tween_duration = 0.3
 
 [node name="AnimationHandler" type="Control" parent="GameplayDiv/RodadaCont"]
 layout_mode = 1
@@ -682,6 +715,7 @@ offset_right = 142.031
 offset_bottom = 238.333
 mouse_filter = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card"]
 
@@ -695,6 +729,7 @@ offset_right = 142.031
 offset_bottom = 238.333
 mouse_filter = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card2"]
 
@@ -708,6 +743,7 @@ offset_right = 142.031
 offset_bottom = 238.333
 mouse_filter = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card3"]
 
@@ -721,6 +757,7 @@ offset_right = 142.031
 offset_bottom = 238.333
 mouse_filter = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card4"]
 
@@ -734,6 +771,7 @@ offset_right = 142.031
 offset_bottom = 238.333
 mouse_filter = 2
 data = null
+exit_tween_duration = 0.3
 
 [node name="Start_Timer" type="Timer" parent="GameplayDiv/RodadaCont/AnimationHandler/Control_Card5"]
 
